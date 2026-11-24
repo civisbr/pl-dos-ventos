@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dados de desastres por vento · CivisBR</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header class="cabecalho">
+    <a class="marca" href="./">CivisBR</a>
+    <nav aria-label="Principal"><a href="dados.html" aria-current="page">Dados</a><a href="./#acompanhamento">Acompanhamento</a></nav>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="rotulo">Atlas Digital de Desastres no Brasil · 1991–2025</p>
+      <h1>Onde o vento causa mais danos?</h1>
+      <p>Compare ocorrências registradas, danos humanos diretos e moradias atingidas. A posição de um estado muda conforme o indicador.</p>
+    </section>
+    <section class="secao" aria-labelledby="resumo">
+      <h2 id="resumo">Vendavais e ciclones</h2>
+      <div class="grade">@@DESTAQUES@@</div>
+      <p>Os destaques usam os totais nacionais por unidade da Federação. Moradias atingidas somam unidades danificadas e destruídas nos registros do período.</p>
+      @@VENTOS@@
+    </section>
+    <section class="secao" aria-labelledby="tornados">
+      <h2 id="tornados">Tornados</h2>
+      <p>O Atlas classifica tornados separadamente. A tabela mantém esse recorte.</p>
+      @@TORNADOS@@
+    </section>
+    <section class="secao" aria-labelledby="metodologia">
+      <h2 id="metodologia">Como interpretar</h2>
+      <p>Uma ocorrência é um registro de desastre na base. Um mesmo evento meteorológico pode gerar registros em vários municípios. O total de danos humanos diretos inclui mortes, ferimentos, enfermidades, desaparecimentos, desalojamentos e desabrigamentos registrados.</p>
+      <p>As contagens habitacionais são acumuladas por registro. Elas não identificam moradias únicas nem quantos danos foram especificamente em coberturas. Zeros e lacunas de preenchimento podem subestimar o dano. A comparação usa números absolutos e não mede risco individual nem probabilidade de vento.</p>
+      <p>Fonte e recorte de extração disponíveis na <a href="metodologia.md" download>metodologia (Markdown)</a>. Consulte também a <a href="https://atlasdigital.mdr.gov.br/paginas/downloads.xhtml">base oficial do MIDR</a> ou baixe os <a href="impactos.json" download>totais por UF em JSON</a>.</p>
+    </section>
+  </main>
+  <footer>Dados do Atlas Digital de Desastres no Brasil · agregação CivisBR</footer>
+</body>
+</html>

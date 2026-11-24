@@ -1,0 +1,388 @@
+{
+  "edicao": "1991–2025 · v1.1 · 06/08/2026",
+  "sha256_csv": "78f7efd2d853021678ff4af891e938375b9fd0ce77026cbe052a53dae12bf425",
+  "grupos": {
+    "vendavais_ciclones": {
+      "AC": {
+        "ocorrencias": 8,
+        "atingidos": 1447,
+        "moradias_danificadas": 464,
+        "moradias_destruidas": 29,
+        "registros_com_moradias": 7
+      },
+      "AL": {
+        "ocorrencias": 2,
+        "atingidos": 57,
+        "moradias_danificadas": 14,
+        "moradias_destruidas": 29,
+        "registros_com_moradias": 2
+      },
+      "AM": {
+        "ocorrencias": 42,
+        "atingidos": 10858,
+        "moradias_danificadas": 3599,
+        "moradias_destruidas": 423,
+        "registros_com_moradias": 30
+      },
+      "AP": {
+        "ocorrencias": 21,
+        "atingidos": 1576,
+        "moradias_danificadas": 221,
+        "moradias_destruidas": 9,
+        "registros_com_moradias": 5
+      },
+      "BA": {
+        "ocorrencias": 26,
+        "atingidos": 7063,
+        "moradias_danificadas": 2796,
+        "moradias_destruidas": 160,
+        "registros_com_moradias": 14
+      },
+      "CE": {
+        "ocorrencias": 7,
+        "atingidos": 100,
+        "moradias_danificadas": 1438,
+        "moradias_destruidas": 0,
+        "registros_com_moradias": 4
+      },
+      "DF": {
+        "ocorrencias": 3,
+        "atingidos": 58,
+        "moradias_danificadas": 99,
+        "moradias_destruidas": 1283,
+        "registros_com_moradias": 2
+      },
+      "ES": {
+        "ocorrencias": 143,
+        "atingidos": 5471,
+        "moradias_danificadas": 4920,
+        "moradias_destruidas": 1163,
+        "registros_com_moradias": 68
+      },
+      "GO": {
+        "ocorrencias": 19,
+        "atingidos": 847,
+        "moradias_danificadas": 3971,
+        "moradias_destruidas": 42,
+        "registros_com_moradias": 13
+      },
+      "MA": {
+        "ocorrencias": 3,
+        "atingidos": 65,
+        "moradias_danificadas": 60,
+        "moradias_destruidas": 1,
+        "registros_com_moradias": 2
+      },
+      "MG": {
+        "ocorrencias": 449,
+        "atingidos": 27166,
+        "moradias_danificadas": 22426,
+        "moradias_destruidas": 2718,
+        "registros_com_moradias": 285
+      },
+      "MS": {
+        "ocorrencias": 254,
+        "atingidos": 7863,
+        "moradias_danificadas": 9311,
+        "moradias_destruidas": 976,
+        "registros_com_moradias": 109
+      },
+      "MT": {
+        "ocorrencias": 97,
+        "atingidos": 2105,
+        "moradias_danificadas": 3573,
+        "moradias_destruidas": 269,
+        "registros_com_moradias": 42
+      },
+      "PA": {
+        "ocorrencias": 110,
+        "atingidos": 7704,
+        "moradias_danificadas": 49892,
+        "moradias_destruidas": 123,
+        "registros_com_moradias": 50
+      },
+      "PB": {
+        "ocorrencias": 5,
+        "atingidos": 475,
+        "moradias_danificadas": 435,
+        "moradias_destruidas": 9,
+        "registros_com_moradias": 3
+      },
+      "PE": {
+        "ocorrencias": 22,
+        "atingidos": 61,
+        "moradias_danificadas": 497,
+        "moradias_destruidas": 422,
+        "registros_com_moradias": 7
+      },
+      "PI": {
+        "ocorrencias": 5,
+        "atingidos": 55,
+        "moradias_danificadas": 109,
+        "moradias_destruidas": 7,
+        "registros_com_moradias": 3
+      },
+      "PR": {
+        "ocorrencias": 597,
+        "atingidos": 46273,
+        "moradias_danificadas": 60363,
+        "moradias_destruidas": 7724,
+        "registros_com_moradias": 505
+      },
+      "RJ": {
+        "ocorrencias": 115,
+        "atingidos": 3343,
+        "moradias_danificadas": 3136,
+        "moradias_destruidas": 266,
+        "registros_com_moradias": 65
+      },
+      "RN": {
+        "ocorrencias": 19,
+        "atingidos": 559,
+        "moradias_danificadas": 168,
+        "moradias_destruidas": 35,
+        "registros_com_moradias": 10
+      },
+      "RO": {
+        "ocorrencias": 13,
+        "atingidos": 69,
+        "moradias_danificadas": 220,
+        "moradias_destruidas": 2,
+        "registros_com_moradias": 4
+      },
+      "RR": {
+        "ocorrencias": 6,
+        "atingidos": 158,
+        "moradias_danificadas": 55,
+        "moradias_destruidas": 6,
+        "registros_com_moradias": 2
+      },
+      "RS": {
+        "ocorrencias": 1172,
+        "atingidos": 149901,
+        "moradias_danificadas": 121711,
+        "moradias_destruidas": 4072,
+        "registros_com_moradias": 601
+      },
+      "SC": {
+        "ocorrencias": 1462,
+        "atingidos": 97754,
+        "moradias_danificadas": 271346,
+        "moradias_destruidas": 3281,
+        "registros_com_moradias": 850
+      },
+      "SE": {
+        "ocorrencias": 11,
+        "atingidos": 304,
+        "moradias_danificadas": 148,
+        "moradias_destruidas": 79,
+        "registros_com_moradias": 5
+      },
+      "SP": {
+        "ocorrencias": 271,
+        "atingidos": 7820,
+        "moradias_danificadas": 7380,
+        "moradias_destruidas": 802,
+        "registros_com_moradias": 184
+      },
+      "TO": {
+        "ocorrencias": 3,
+        "atingidos": 57,
+        "moradias_danificadas": 530,
+        "moradias_destruidas": 2,
+        "registros_com_moradias": 2
+      }
+    },
+    "tornados": {
+      "AC": {
+        "ocorrencias": 0,
+        "atingidos": 0,
+        "moradias_danificadas": 0,
+        "moradias_destruidas": 0,
+        "registros_com_moradias": 0
+      },
+      "AL": {
+        "ocorrencias": 0,
+        "atingidos": 0,
+        "moradias_danificadas": 0,
+        "moradias_destruidas": 0,
+        "registros_com_moradias": 0
+      },
+      "AM": {
+        "ocorrencias": 0,
+        "atingidos": 0,
+        "moradias_danificadas": 0,
+        "moradias_destruidas": 0,
+        "registros_com_moradias": 0
+      },
+      "AP": {
+        "ocorrencias": 1,
+        "atingidos": 0,
+        "moradias_danificadas": 0,
+        "moradias_destruidas": 0,
+        "registros_com_moradias": 0
+      },
+      "BA": {
+        "ocorrencias": 2,
+        "atingidos": 0,
+        "moradias_danificadas": 0,
+        "moradias_destruidas": 0,
+        "registros_com_moradias": 0
+      },
+      "CE": {
+        "ocorrencias": 0,
+        "atingidos": 0,
+        "moradias_danificadas": 0,
+        "moradias_destruidas": 0,
+        "registros_com_moradias": 0
+      },
+      "DF": {
+        "ocorrencias": 0,
+        "atingidos": 0,
+        "moradias_danificadas": 0,
+        "moradias_destruidas": 0,
+        "registros_com_moradias": 0
+      },
+      "ES": {
+        "ocorrencias": 1,
+        "atingidos": 920,
+        "moradias_danificadas": 561,
+        "moradias_destruidas": 1,
+        "registros_com_moradias": 1
+      },
+      "GO": {
+        "ocorrencias": 0,
+        "atingidos": 0,
+        "moradias_danificadas": 0,
+        "moradias_destruidas": 0,
+        "registros_com_moradias": 0
+      },
+      "MA": {
+        "ocorrencias": 0,
+        "atingidos": 0,
+        "moradias_danificadas": 0,
+        "moradias_destruidas": 0,
+        "registros_com_moradias": 0
+      },
+      "MG": {
+        "ocorrencias": 1,
+        "atingidos": 152,
+        "moradias_danificadas": 80,
+        "moradias_destruidas": 3,
+        "registros_com_moradias": 1
+      },
+      "MS": {
+        "ocorrencias": 7,
+        "atingidos": 178,
+        "moradias_danificadas": 256,
+        "moradias_destruidas": 329,
+        "registros_com_moradias": 2
+      },
+      "MT": {
+        "ocorrencias": 1,
+        "atingidos": 0,
+        "moradias_danificadas": 2,
+        "moradias_destruidas": 0,
+        "registros_com_moradias": 1
+      },
+      "PA": {
+        "ocorrencias": 1,
+        "atingidos": 5,
+        "moradias_danificadas": 105,
+        "moradias_destruidas": 0,
+        "registros_com_moradias": 1
+      },
+      "PB": {
+        "ocorrencias": 0,
+        "atingidos": 0,
+        "moradias_danificadas": 0,
+        "moradias_destruidas": 0,
+        "registros_com_moradias": 0
+      },
+      "PE": {
+        "ocorrencias": 0,
+        "atingidos": 0,
+        "moradias_danificadas": 0,
+        "moradias_destruidas": 0,
+        "registros_com_moradias": 0
+      },
+      "PI": {
+        "ocorrencias": 0,
+        "atingidos": 0,
+        "moradias_danificadas": 0,
+        "moradias_destruidas": 0,
+        "registros_com_moradias": 0
+      },
+      "PR": {
+        "ocorrencias": 14,
+        "atingidos": 7213,
+        "moradias_danificadas": 2631,
+        "moradias_destruidas": 2318,
+        "registros_com_moradias": 12
+      },
+      "RJ": {
+        "ocorrencias": 0,
+        "atingidos": 0,
+        "moradias_danificadas": 0,
+        "moradias_destruidas": 0,
+        "registros_com_moradias": 0
+      },
+      "RN": {
+        "ocorrencias": 0,
+        "atingidos": 0,
+        "moradias_danificadas": 0,
+        "moradias_destruidas": 0,
+        "registros_com_moradias": 0
+      },
+      "RO": {
+        "ocorrencias": 1,
+        "atingidos": 97,
+        "moradias_danificadas": 0,
+        "moradias_destruidas": 0,
+        "registros_com_moradias": 0
+      },
+      "RR": {
+        "ocorrencias": 0,
+        "atingidos": 0,
+        "moradias_danificadas": 0,
+        "moradias_destruidas": 0,
+        "registros_com_moradias": 0
+      },
+      "RS": {
+        "ocorrencias": 31,
+        "atingidos": 7609,
+        "moradias_danificadas": 2236,
+        "moradias_destruidas": 359,
+        "registros_com_moradias": 24
+      },
+      "SC": {
+        "ocorrencias": 61,
+        "atingidos": 8603,
+        "moradias_danificadas": 9330,
+        "moradias_destruidas": 620,
+        "registros_com_moradias": 38
+      },
+      "SE": {
+        "ocorrencias": 0,
+        "atingidos": 0,
+        "moradias_danificadas": 0,
+        "moradias_destruidas": 0,
+        "registros_com_moradias": 0
+      },
+      "SP": {
+        "ocorrencias": 3,
+        "atingidos": 3862,
+        "moradias_danificadas": 1116,
+        "moradias_destruidas": 104,
+        "registros_com_moradias": 2
+      },
+      "TO": {
+        "ocorrencias": 0,
+        "atingidos": 0,
+        "moradias_danificadas": 0,
+        "moradias_destruidas": 0,
+        "registros_com_moradias": 0
+      }
+    }
+  }
+}
