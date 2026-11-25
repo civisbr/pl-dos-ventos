@@ -3,9 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PL dos Ventos · CivisBR</title>
-  <meta name="description" content="Proposta cidadã de reforço preventivo de coberturas no Sul do Brasil, dados de desastres e acompanhamento das sugestões.">
-  <meta name="theme-color" content="#f8fbfc">
+  @@CABECA@@
   <link rel="icon" href="assets/favicon-ventos-brisa.ico">
   <link rel="stylesheet" href="estilos.css">
   <script src="vento.js" defer></script>
@@ -27,45 +25,48 @@
     <div class="abertura-fundo">
       <section class="abertura limite" aria-labelledby="titulo">
         <div class="abertura-texto">
-          <p class="contexto">PREVENÇÃO DE DESASTRES · RS, SC E PR</p>
           <h1 id="titulo">A prevenção vem <em>antes do vento.</em></h1>
-          <p class="introducao">Uma proposta para reforçar coberturas vulneráveis enquanto as casas ainda estão intactas, com prioridade para famílias de baixa renda.</p>
+          <p class="introducao">De @@PERIODO@@, os registros de vendavais e ciclones no RS, SC e PR somam <strong>@@MORADIAS_SUL@@ moradias danificadas ou destruídas</strong>. Esta proposta quer reforçar as coberturas vulneráveis antes do próximo vento, com prioridade para famílias de baixa renda.</p>
+          <p class="nota-dado">Soma de registros do Atlas: um mesmo imóvel pode aparecer mais de uma vez. <a href="metodologia.html">Como contamos</a></p>
           <div class="acoes">
             <a class="botao" href="#titulo-dados">Explorar os dados</a>
-            <a class="link-texto" href="minuta-modelo.md" download>Baixar a minuta</a>
+            <a class="link-texto" href="minuta-modelo.html">Ler a minuta</a>
           </div>
         </div>
-        <section class="campo" aria-labelledby="titulo-campo">
-          <div class="campo-topo"><h2 id="titulo-campo">Campo de vento</h2><p id="legenda-campo">Visualização didática</p></div>
+        <div class="campo">
+          <div class="campo-topo"><p class="campo-titulo">Campo de vento</p><p id="legenda-campo">Visualização didática</p></div>
           <div class="campo-figura">
-            <canvas id="vento-canvas" aria-hidden="true"></canvas>
+            <canvas id="vento-canvas" role="img" aria-label="Ilustração didática: linhas de vento que contornam um ponto central"></canvas>
             <span class="campo-norte" aria-hidden="true">N</span>
             <span class="campo-leste" aria-hidden="true">L</span>
             <span class="campo-sul" aria-hidden="true">S</span>
             <span class="campo-oeste" aria-hidden="true">O</span>
           </div>
           <div id="controles-vento" class="controles-vento" hidden>
-            <div><label for="direcao">Vento vindo de <output id="direcao-atual" for="direcao">Noroeste</output></label><input id="direcao" type="range" min="0" max="7" step="1" value="7"></div>
-            <div><label for="intensidade">Intensidade visual <output id="intensidade-atual" for="intensidade">Moderada</output></label><input id="intensidade" type="range" min="0" max="2" step="1" value="1"></div>
             <button id="movimento" type="button">Animar o vento</button>
+            <details class="ajustes">
+              <summary>Ajustar a ilustração</summary>
+              <div><label for="direcao">Vento vindo de <output id="direcao-atual" for="direcao">Noroeste</output></label><input id="direcao" type="range" min="0" max="7" step="1" value="7"></div>
+              <div><label for="intensidade">Intensidade visual <output id="intensidade-atual" for="intensidade">Moderada</output></label><input id="intensidade" type="range" min="0" max="2" step="1" value="1"></div>
+            </details>
           </div>
-          <noscript><p class="sem-script">O campo interativo requer JavaScript. A proposta e os dados estão nas seções abaixo.</p></noscript>
-        </section>
+          <noscript><p class="sem-script">A ilustração interativa requer JavaScript. A proposta e os dados estão nas seções abaixo.</p></noscript>
+        </div>
       </section>
     </div>
 
-    <aside class="faixa" aria-label="Dados sobre vendavais e ciclones">
+    <section class="faixa" aria-label="Dados sobre vendavais e ciclones">
       <div class="limite faixa-conteudo">
         <p class="dado-grande">@@REGISTROS_SUL@@</p>
-        <div><h2>registros de vendavais e ciclones no Sul</h2><p>De @@REGISTROS_BRASIL@@ no Brasil, de 1991 a 2025. Atlas Digital de Desastres.</p></div>
-        <a class="link-texto" href="dados.html">Ver fonte e metodologia</a>
+        <div><h2>registros de vendavais e ciclones no Sul</h2><p>De @@REGISTROS_BRASIL@@ no Brasil, de @@PERIODO@@. Atlas Digital de Desastres.</p></div>
+        <a class="link-texto" href="dados.html#metodologia">Ver fonte e metodologia</a>
       </div>
-    </aside>
+    </section>
 
     <section class="secao limite secao-dados" aria-labelledby="titulo-dados">
-      <div class="intro-dados"><h2 id="titulo-dados">O impacto, estado a estado</h2><p>Compare ocorrências, danos humanos e o impacto nas moradias. Os dados abrangem o período de 1991 a 2025.</p></div>
+      <div class="intro-dados"><h2 id="titulo-dados">O impacto, estado a estado</h2><p>Compare ocorrências, danos humanos e o impacto nas moradias. Os dados abrangem o período de @@PERIODO@@.</p></div>
           <section id="explorador" class="explorador" hidden aria-labelledby="titulo-explorador">
-      <h2 id="titulo-explorador">Comparar estados</h2>
+      <h3 id="titulo-explorador">Comparar estados</h3>
       <div class="controles">
         <div><label for="fenomeno">Fenômeno</label><select id="fenomeno"><option value="vendavais_ciclones">Vendavais e ciclones</option><option value="tornados">Tornados</option></select></div>
         <div><label for="indicador">Indicador</label><select id="indicador">
@@ -80,7 +81,13 @@
       </div>
       <p id="resumo-grafico" class="resumo-grafico" role="status" aria-atomic="true"></p>
       <ol id="barras" class="barras" aria-label="Estados em ordem decrescente pelo indicador selecionado"></ol>
+      <div class="acoes-explorador">
+        <button id="copiar-link" type="button">Copiar link desta visão</button>
+        <button id="baixar-csv" type="button">Baixar este recorte (CSV)</button>
+        <span id="aviso-explorador" class="aviso-explorador" role="status"></span>
+      </div>
     </section>
+    <noscript>@@TABELA_SUL@@</noscript>
 
       <p class="link-fonte"><a href="dados.html">Abrir tabelas completas e metodologia</a></p>
     </section>
@@ -101,13 +108,13 @@
       <div class="limite colunas">
         <div><h2 id="titulo-acompanhamento">Acompanhamento das sugestões</h2>
           <p class="texto-lateral">O CivisBR registra aqui as movimentações confirmadas nos canais de cada Assembleia.</p>
-          <a class="link-texto" href="encaminhamentos.md" download>Baixar notas de encaminhamento</a>
+          <a class="link-texto" href="encaminhamentos.html">Ler as notas de encaminhamento</a>
         </div>
         <div class="historicos">@@ACOMPANHAMENTO@@</div>
       </div>
     </section>
   </main>
-  <footer class="limite rodape"><p><strong>CivisBR</strong> · Proposta cidadã preliminar</p><a href="https://github.com/civisbr/pl-dos-ventos">Repositório do projeto</a></footer>
+  <footer class="limite rodape"><p><strong>CivisBR</strong> · Proposta cidadã preliminar · Dados: Atlas Digital de Desastres, edição @@EDICAO@@</p><a href="https://github.com/civisbr/pl-dos-ventos">Repositório do projeto</a></footer>
   <script type="application/json" id="dados-explorador">@@DADOS_EXPLORADOR@@</script>
 </body>
 </html>

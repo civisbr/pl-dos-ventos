@@ -9,6 +9,9 @@ const resumo = document.getElementById("resumo-grafico");
 const { ufs, sul, grupos } = JSON.parse(document.getElementById("dados-explorador").textContent);
 const numero = new Intl.NumberFormat("pt-BR");
 const compararNomes = new Intl.Collator("pt-BR");
+const aviso = document.getElementById("aviso-explorador");
+const seletores = { fenomeno, indicador, recorte };
+let linhasAtuais = [];
 
 function criarLinha(uf, valor, maximo) {
   const linha = document.createElement("li");
@@ -17,6 +20,12 @@ function criarLinha(uf, valor, maximo) {
   const nome = document.createElement("span");
   nome.className = "barra-nome";
   nome.textContent = ufs[uf];
+  if (sul.includes(uf) && recorte.value === "brasil") {
+    const selo = document.createElement("span");
+    selo.className = "selo-sul";
+    selo.textContent = "Sul";
+    nome.append(" ", selo);
+  }
 
   const eixo = document.createElement("span");
   eixo.className = "barra-eixo";
@@ -37,6 +46,7 @@ function atualizar() {
   const siglas = recorte.value === "sul" ? sul : Object.keys(ufs);
   const linhas = siglas.map(uf => [uf, grupo[uf][chave]]);
   linhas.sort(([ufA, valorA], [ufB, valorB]) => valorB - valorA || compararNomes.compare(ufs[ufA], ufs[ufB]));
+  linhasAtuais = linhas;
   const maximo = linhas[0][1];
   const lideres = linhas.filter(([, valor]) => valor === maximo).map(([uf]) => ufs[uf]);
   barras.replaceChildren(...linhas.map(([uf, valor]) => criarLinha(uf, valor, maximo)));
@@ -45,8 +55,58 @@ function atualizar() {
     : `${indicador.selectedOptions[0].textContent} · Sem valores positivos no recorte selecionado.`;
 }
 
-for (const controle of [fenomeno, indicador, recorte]) {
-  controle.addEventListener("change", atualizar);
+function lerEndereco() {
+  const parametros = new URLSearchParams(location.search);
+  for (const [nome, controle] of Object.entries(seletores)) {
+    const valor = parametros.get(nome);
+    if (valor && [...controle.options].some(opcao => opcao.value === valor)) controle.value = valor;
+  }
 }
+
+function enderecoAtual() {
+  const url = new URL(location.href);
+  url.hash = "";
+  for (const [nome, controle] of Object.entries(seletores)) url.searchParams.set(nome, controle.value);
+  return url;
+}
+
+function avisar(texto) {
+  aviso.textContent = texto;
+  setTimeout(() => { aviso.textContent = ""; }, 4000);
+}
+
+async function copiarLink() {
+  const endereco = enderecoAtual().href;
+  try {
+    await navigator.clipboard.writeText(endereco);
+    avisar("Link copiado.");
+  } catch {
+    avisar(`Copie o endereço: ${endereco}`);
+  }
+}
+
+function baixarCsv() {
+  const cabecalho = ["Estado", "Sigla", indicador.selectedOptions[0].textContent];
+  const corpo = linhasAtuais.map(([uf, valor]) => [ufs[uf], uf, valor]);
+  const texto = [cabecalho, ...corpo].map(linha => linha.join(";")).join("\r\n");
+  const arquivo = URL.createObjectURL(new Blob(["\ufeff", texto], { type: "text/csv;charset=utf-8" }));
+  const ancora = document.createElement("a");
+  ancora.href = arquivo;
+  ancora.download = `${fenomeno.value}-${indicador.value}-${recorte.value}.csv`;
+  document.body.append(ancora);
+  ancora.click();
+  ancora.remove();
+  setTimeout(() => URL.revokeObjectURL(arquivo), 1000);
+}
+
+for (const controle of Object.values(seletores)) {
+  controle.addEventListener("change", () => {
+    atualizar();
+    history.replaceState(null, "", enderecoAtual());
+  });
+}
+document.getElementById("copiar-link").addEventListener("click", copiarLink);
+document.getElementById("baixar-csv").addEventListener("click", baixarCsv);
+lerEndereco();
 atualizar();
 painel.hidden = false;

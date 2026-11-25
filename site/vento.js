@@ -10,6 +10,7 @@ const reducao = window.matchMedia("(prefers-reduced-motion: reduce)");
 const rosa = ["Norte", "Nordeste", "Leste", "Sudeste", "Sul", "Sudoeste", "Oeste", "Noroeste"];
 const niveis = ["Suave", "Moderada", "Forte"];
 let parado = true;
+let visivel = true;
 let quadro = 0;
 let tempo = 0;
 let anterior = 0;
@@ -79,7 +80,7 @@ function ajustarMovimento() {
   cancelAnimationFrame(quadro);
   anterior = 0;
   movimento.textContent = parado ? "Animar o vento" : "Pausar movimento";
-  if (!parado) quadro = requestAnimationFrame(animar);
+  if (!parado && visivel && !document.hidden) quadro = requestAnimationFrame(animar);
   else desenhar();
 }
 
@@ -93,8 +94,15 @@ function atualizarControles() {
   desenhar();
 }
 
-if (ctx) {
+if (ctx && "ResizeObserver" in window) {
   controles.hidden = false;
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(([entrada]) => {
+      visivel = entrada.isIntersecting;
+      ajustarMovimento();
+    }).observe(canvas);
+  }
+  document.addEventListener("visibilitychange", ajustarMovimento);
   new ResizeObserver(() => {
     const pixels = Math.min(window.devicePixelRatio || 1, 2);
     largura = canvas.clientWidth;

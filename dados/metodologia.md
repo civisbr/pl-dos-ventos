@@ -26,7 +26,7 @@
 Baixe o CSV da edição indicada e, com Python 3.11 ou superior, execute na raiz do repositório:
 
 ```sh
-python3 scripts/agregar_atlas.py /caminho/para/arquivo.csv > dados/impactos.json
+python3 scripts/agregar_atlas.py /caminho/para/arquivo.csv --edicao "1991–2025 · v1.1 · 06/08/2026"
 python3 scripts/gerar_site.py
 ```
 

@@ -3,10 +3,11 @@
 import argparse
 import csv
 from collections import defaultdict
-from decimal import Decimal
 import hashlib
 import json
+import os
 from pathlib import Path
+import tempfile
 
 METRICAS = {
     "atingidos": "DH_total_danos_humanos_diretos",
@@ -14,40 +15,86 @@ METRICAS = {
     "moradias_destruidas": "DM_Uni Habita Destruidas",
 }
 GRUPOS = {"Vendavais e Ciclones": "vendavais_ciclones", "Tornado": "tornados"}
+SIGLAS = {
+    "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA",
+    "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO",
+}
+PRIMEIRO_ANO, ULTIMO_ANO = 1991, 2025
 
-parser = argparse.ArgumentParser(description=__doc__)
-parser.add_argument("csv", type=Path)
-args = parser.parse_args()
 
-ufs = defaultdict(lambda: defaultdict(int))
-base = {grupo: defaultdict(lambda: defaultdict(int)) for grupo in GRUPOS.values()}
-with args.csv.open(encoding="cp1252", newline="") as origem:
-    for linha in csv.DictReader(origem, delimiter=";"):
-        uf = linha["Sigla_UF"].strip().upper()
-        if len(uf) == 2:
-            ufs[uf]
-        grupo = GRUPOS.get(linha["descricao_tipologia"])
+def inteiro(linha, numero, coluna):
+    try:
+        return int(linha[coluna] or 0)
+    except ValueError as erro:
+        raise ValueError(f"linha {numero}: valor inválido em {coluna}") from erro
+
+
+def agregar(origem, edicao, sha256):
+    base = {grupo: defaultdict(lambda: defaultdict(int)) for grupo in GRUPOS.values()}
+    for numero, linha in enumerate(csv.DictReader(origem, delimiter=";"), start=2):
+        grupo = GRUPOS.get((linha["descricao_tipologia"] or "").strip())
         if not grupo:
             continue
-        if not linha["Data_Evento"] or linha.get(None) or linha["PE_PLePR"] is None:
-            raise ValueError("Registro incompleto ou CSV malformado")
-        ano = int(linha["Data_Evento"][-4:])
-        if not 1991 <= ano <= 2025:
+        if not linha["Data_Evento"] or linha.get(None):
+            raise ValueError(f"linha {numero}: registro incompleto ou CSV malformado")
+        try:
+            ano = int(linha["Data_Evento"].strip().split("/")[-1][:4])
+        except ValueError as erro:
+            raise ValueError(f"linha {numero}: data inválida") from erro
+        if not PRIMEIRO_ANO <= ano <= ULTIMO_ANO:
             continue
+        uf = linha["Sigla_UF"].strip().upper()
+        if uf not in SIGLAS:
+            raise ValueError(f"linha {numero}: sigla de UF inválida ({uf!r})")
         destino = base[grupo][uf]
         destino["ocorrencias"] += 1
         for chave, coluna in METRICAS.items():
-            destino[chave] += int(linha[coluna] or 0)
-        if int(linha[METRICAS["moradias_danificadas"]] or 0) or int(linha[METRICAS["moradias_destruidas"]] or 0):
+            destino[chave] += inteiro(linha, numero, coluna)
+        if inteiro(linha, numero, METRICAS["moradias_danificadas"]) or inteiro(linha, numero, METRICAS["moradias_destruidas"]):
             destino["registros_com_moradias"] += 1
+    for grupo, dados in base.items():
+        if not dados:
+            raise ValueError(f"nenhum registro encontrado para {grupo}")
+    chaves = ["ocorrencias", *METRICAS, "registros_com_moradias"]
+    return {
+        "edicao": edicao,
+        "sha256_csv": sha256,
+        "grupos": {
+            grupo: {uf: {chave: dados[uf][chave] for chave in chaves} for uf in sorted(SIGLAS)}
+            for grupo, dados in base.items()
+        },
+    }
 
-chaves = ["ocorrencias", *METRICAS, "registros_com_moradias"]
-saida = {
-    "edicao": "1991–2025 · v1.1 · 06/08/2026",
-    "sha256_csv": hashlib.file_digest(args.csv.open("rb"), "sha256").hexdigest(),
-    "grupos": {
-        grupo: {uf: {chave: dados[uf][chave] for chave in chaves} for uf in sorted(ufs)}
-        for grupo, dados in base.items()
-    },
-}
-print(json.dumps(saida, ensure_ascii=False, indent=2))
+
+def gravar(caminho, saida):
+    """Troca o arquivo só no fim, para uma falha não deixar o JSON vazio."""
+    caminho = Path(caminho)
+    descritor, temporario = tempfile.mkstemp(dir=caminho.parent, suffix=".tmp")
+    try:
+        os.fchmod(descritor, 0o644)
+        with os.fdopen(descritor, "w", encoding="utf-8") as arquivo:
+            json.dump(saida, arquivo, ensure_ascii=False, indent=2)
+            arquivo.write("\n")
+            arquivo.flush()
+            os.fsync(arquivo.fileno())
+        os.replace(temporario, caminho)
+    except BaseException:
+        Path(temporario).unlink(missing_ok=True)
+        raise
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("csv", type=Path)
+    parser.add_argument("--edicao", required=True, help='ex.: "1991–2025 · v1.1 · 06/08/2026"')
+    parser.add_argument("--saida", type=Path, default=Path("dados/impactos.json"))
+    args = parser.parse_args()
+    with args.csv.open("rb") as arquivo:
+        sha256 = hashlib.file_digest(arquivo, "sha256").hexdigest()
+    with args.csv.open(encoding="cp1252", newline="") as origem:
+        saida = agregar(origem, args.edicao, sha256)
+    gravar(args.saida, saida)
+
+
+if __name__ == "__main__":
+    main()

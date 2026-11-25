@@ -3,9 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dados de desastres por vento · PL dos Ventos</title>
-  <meta name="description" content="Compare registros de vendavais, ciclones e tornados e seus danos humanos e habitacionais por estado, de 1991 a 2025.">
-  <meta name="theme-color" content="#f8fbfc">
+  @@CABECA@@
   <link rel="icon" href="assets/favicon-ventos-brisa.ico">
   <link rel="stylesheet" href="estilos.css">
   <script src="explorar.js" defer></script>
@@ -23,11 +21,10 @@
     </div>
   </header>
   <main id="conteudo" tabindex="-1" class="limite">
-    <header class="cabecalho-dados">
-      <p class="contexto">Atlas Digital de Desastres no Brasil · 1991–2025</p>
+    <div class="cabecalho-dados">
       <h1>Onde o vento causa mais danos?</h1>
-      <p class="introducao">Compare registros de desastres, danos humanos e moradias atingidas por estado. O resultado muda conforme o indicador.</p>
-    </header>
+      <p class="introducao">Compare registros de desastres, danos humanos e moradias atingidas por estado no Atlas Digital de Desastres, @@PERIODO@@. O resultado muda conforme o indicador.</p>
+    </div>
         <section id="explorador" class="explorador" hidden aria-labelledby="titulo-explorador">
       <h2 id="titulo-explorador">Comparar estados</h2>
       <div class="controles">
@@ -44,6 +41,11 @@
       </div>
       <p id="resumo-grafico" class="resumo-grafico" role="status" aria-atomic="true"></p>
       <ol id="barras" class="barras" aria-label="Estados em ordem decrescente pelo indicador selecionado"></ol>
+      <div class="acoes-explorador">
+        <button id="copiar-link" type="button">Copiar link desta visão</button>
+        <button id="baixar-csv" type="button">Baixar este recorte (CSV)</button>
+        <span id="aviso-explorador" class="aviso-explorador" role="status"></span>
+      </div>
     </section>
 
     <section class="secao" aria-labelledby="titulo-tabelas">
@@ -64,12 +66,19 @@
       <p>As contagens de moradias somam unidades danificadas e destruídas por registro. Elas não identificam imóveis únicos nem quais danos ocorreram nas coberturas. Zeros e lacunas de preenchimento podem subestimar o dano. Os totais absolutos não medem risco individual.</p>
       <ul class="fontes">
         <li><a href="https://atlasdigital.mdr.gov.br/paginas/downloads.xhtml">Acessar a base oficial do MIDR</a></li>
-        <li><a href="metodologia.md" download>Baixar a metodologia</a></li>
+        <li><a href="metodologia.html">Ler a metodologia completa</a></li>
         <li><a href="impactos.json" download>Baixar totais por UF (JSON)</a></li>
       </ul>
+      <h3 id="glossario">Glossário</h3>
+      <dl class="glossario">
+        <dt>Registro</dt><dd>Uma linha da base do Atlas. Um mesmo fenômeno pode gerar vários registros, um em cada município atingido.</dd>
+        <dt>Danos humanos diretos</dt><dd>Soma de mortes, ferimentos, enfermidades, desaparecimentos, desalojamentos e desabrigamentos registrados.</dd>
+        <dt>Moradias atingidas</dt><dd>Soma das unidades habitacionais danificadas e das destruídas. Não identifica imóveis únicos.</dd>
+        <dt>Registros com dano habitacional</dt><dd>Registros em que há ao menos uma unidade danificada ou destruída.</dd>
+      </dl>
     </section>
   </main>
-  <footer class="limite rodape"><p><strong>CivisBR</strong> · Agregação dos dados do Atlas</p><a href="https://github.com/civisbr/pl-dos-ventos">Repositório do projeto</a></footer>
+  <footer class="limite rodape"><p><strong>CivisBR</strong> · Agregação dos dados do Atlas, edição @@EDICAO@@</p><a href="https://github.com/civisbr/pl-dos-ventos">Repositório do projeto</a></footer>
   <script type="application/json" id="dados-explorador">@@DADOS_EXPLORADOR@@</script>
 </body>
 </html>

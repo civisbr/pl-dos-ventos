@@ -29,6 +29,7 @@ O site é estático e usa caminhos relativos para funcionar em um repositório d
 Para visualizar localmente, use Python 3.11 ou superior:
 
 ```sh
+python3 -m unittest discover -s tests
 python3 scripts/gerar_site.py
 python3 -m http.server 8000 --directory _dist
 ```
