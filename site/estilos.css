@@ -138,6 +138,9 @@ th:first-child { text-align: left; min-width: 9rem; }
 thead { color: var(--branco); background: var(--mar-escuro); }
 thead th { line-height: 1.25; }
 tbody tr.sul { background: var(--nevoa); }
+.experiencia { border-top: 1px solid var(--linha); }
+.precedentes { margin-top: 0; max-width: none; }
+.precedentes dd { max-width: 65ch; }
 .metodologia { border-top: 1px solid var(--linha); }
 .metodologia p { max-width: 75ch; }
 .fontes { padding-left: 1.3rem; }
