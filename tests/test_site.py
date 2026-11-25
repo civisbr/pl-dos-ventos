@@ -155,13 +155,19 @@ class Agregacao(unittest.TestCase):
 class FontesExternas(unittest.TestCase):
     def setUp(self):
         site = (RAIZ / "site" / "index.html").read_text(encoding="utf-8")
-        inicio = site.index('<section id="experiencia"')
-        self.links_site = re.findall(r'href="([^"]+)"', site[inicio:site.index("</section>", inicio)])
+        self.links_site = []
+        self.links_por_secao = {}
+        for secao in ("experiencia", "normas"):
+            inicio = site.index(f'<section id="{secao}"')
+            links = re.findall(r'href="([^"]+)"', site[inicio:site.index("</section>", inicio)])
+            self.links_por_secao[secao] = links
+            self.links_site += links
         minuta = (RAIZ / "docs" / "minuta-modelo.md").read_text(encoding="utf-8")
         self.referencias = minuta[minuta.index("## Referências"):]
 
     def test_secao_tem_links(self):
-        self.assertGreaterEqual(len(self.links_site), 4)
+        self.assertGreaterEqual(len(self.links_por_secao["experiencia"]), 4)
+        self.assertGreaterEqual(len(self.links_por_secao["normas"]), 2)
 
     def test_links_do_site_sao_https(self):
         for link in self.links_site:
