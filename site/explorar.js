@@ -70,9 +70,11 @@ function enderecoAtual() {
   return url;
 }
 
-function avisar(texto) {
+let temporizador = 0;
+function avisar(texto, fixo = false) {
+  clearTimeout(temporizador);
   aviso.textContent = texto;
-  setTimeout(() => { aviso.textContent = ""; }, 4000);
+  if (!fixo) temporizador = setTimeout(() => { aviso.textContent = ""; }, 4000);
 }
 
 async function copiarLink() {
@@ -81,14 +83,15 @@ async function copiarLink() {
     await navigator.clipboard.writeText(endereco);
     avisar("Link copiado.");
   } catch {
-    avisar(`Copie o endereço: ${endereco}`);
+    avisar(`Copie o endereço: ${endereco}`, true);
   }
 }
 
 function baixarCsv() {
   const cabecalho = ["Estado", "Sigla", indicador.selectedOptions[0].textContent];
   const corpo = linhasAtuais.map(([uf, valor]) => [ufs[uf], uf, valor]);
-  const texto = [cabecalho, ...corpo].map(linha => linha.join(";")).join("\r\n");
+  const campo = valor => `"${String(valor).replaceAll('"', '""')}"`;
+  const texto = [cabecalho, ...corpo].map(linha => linha.map(campo).join(";")).join("\r\n");
   const arquivo = URL.createObjectURL(new Blob(["\ufeff", texto], { type: "text/csv;charset=utf-8" }));
   const ancora = document.createElement("a");
   ancora.href = arquivo;

@@ -5,8 +5,11 @@ import re
 
 LINK_INTERNO = {
     "../dados/metodologia.md": "metodologia.html",
+    "minuta-modelo.md": "minuta-modelo.html",
+    "encaminhamentos.md": "encaminhamentos.html",
     "impactos.json": "impactos.json",
 }
+ORDENADA = re.compile(r"\d{1,2}\. ")
 INLINE = re.compile(r"\*\*(.+?)\*\*|`([^`]+)`|\[([^\]]+)\]\(([^)\s]+)\)")
 
 
@@ -80,6 +83,12 @@ def converter(texto):
                 itens.append(f"<li>{inline(linhas[i][2:])}</li>")
                 i += 1
             blocos.append("<ul>" + "".join(itens) + "</ul>")
+        elif ORDENADA.match(linha):
+            itens = []
+            while i < len(linhas) and ORDENADA.match(linhas[i]):
+                itens.append(f"<li>{inline(ORDENADA.sub('', linhas[i], count=1))}</li>")
+                i += 1
+            blocos.append("<ol>" + "".join(itens) + "</ol>")
         elif linha.startswith(">"):
             citacao = []
             while i < len(linhas) and linhas[i].startswith(">"):
@@ -89,7 +98,7 @@ def converter(texto):
             blocos.append("<blockquote>" + "".join(f"<p>{inline(p)}</p>" for p in paragrafos) + "</blockquote>")
         else:
             paragrafo = []
-            while i < len(linhas) and linhas[i].strip() and not linhas[i].startswith(("#", "|", "- ", ">", "```")):
+            while i < len(linhas) and linhas[i].strip() and not linhas[i].startswith(("#", "|", "- ", ">", "```")) and not ORDENADA.match(linhas[i]):
                 paragrafo.append(linhas[i].strip())
                 i += 1
             blocos.append(f"<p>{inline(' '.join(paragrafo))}</p>")

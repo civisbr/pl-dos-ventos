@@ -1,6 +1,7 @@
 import io
 import json
 from pathlib import Path
+import re
 import sys
 import tempfile
 import unittest
@@ -11,6 +12,7 @@ import agregar_atlas
 import gerar_site
 from md import converter
 
+RAIZ = Path(__file__).resolve().parents[1]
 CABECALHO = "Sigla_UF;Data_Evento;descricao_tipologia;DH_total_danos_humanos_diretos;DM_Uni Habita Danificadas;DM_Uni Habita Destruidas\n"
 
 
@@ -92,6 +94,12 @@ class Markdown(unittest.TestCase):
         self.assertIn('<a href="https://exemplo.org">link</a>', html)
         self.assertIn("<li>b</li>", html)
 
+    def test_lista_numerada(self):
+        html = converter("1. um\n2. [dois](https://exemplo.org)\n\ntexto")
+        self.assertIn("<ol><li>um</li><li><a", html)
+        self.assertIn("<p>texto</p>", html)
+        self.assertNotIn("<ol>", converter("2013. Depois do tornado"))
+
     def test_rejeita_link_perigoso(self):
         with self.assertRaises(ValueError):
             converter("[x](javascript:alert(1))")
@@ -123,7 +131,13 @@ class Agregacao(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.agregar("XX;01/02/2020;Vendavais e Ciclones;1;1;1\nRS;01/02/2020;Tornado;0;0;0\n")
         with self.assertRaises(ValueError):
-            self.agregar("RS;01/02/2020;Vendavais e Ciclones;x;1;1\n")
+            self.agregar("RS;01/02/2020;Vendavais e Ciclones;x;1;1\nRS;01/02/2020;Tornado;0;0;0\n")
+
+    def test_falha_com_linha_truncada_e_ano_de_dois_digitos(self):
+        with self.assertRaises(ValueError):
+            self.agregar("RS;01/02/2020;Vendavais e Ciclones\nRS;01/02/2020;Tornado;0;0;0\n")
+        with self.assertRaises(ValueError):
+            self.agregar("RS;01/02/20;Vendavais e Ciclones;1;1;1\nRS;01/02/2020;Tornado;0;0;0\n")
 
     def test_falha_sem_registros_de_um_grupo(self):
         with self.assertRaises(ValueError):
@@ -136,6 +150,33 @@ class Agregacao(unittest.TestCase):
             agregar_atlas.gravar(destino, {"a": 1})
             self.assertEqual(json.loads(destino.read_text()), {"a": 1})
             self.assertEqual(list(Path(pasta).iterdir()), [destino])
+
+
+class FontesExternas(unittest.TestCase):
+    def setUp(self):
+        site = (RAIZ / "site" / "index.html").read_text(encoding="utf-8")
+        inicio = site.index('<section id="experiencia"')
+        self.links_site = re.findall(r'href="([^"]+)"', site[inicio:site.index("</section>", inicio)])
+        minuta = (RAIZ / "docs" / "minuta-modelo.md").read_text(encoding="utf-8")
+        self.referencias = minuta[minuta.index("## Referências"):]
+
+    def test_secao_tem_links(self):
+        self.assertGreaterEqual(len(self.links_site), 4)
+
+    def test_links_do_site_sao_https(self):
+        for link in self.links_site:
+            self.assertTrue(link.startswith("https://"), link)
+
+    def test_links_do_site_estao_nas_referencias_da_minuta(self):
+        for link in self.links_site:
+            self.assertIn(link, self.referencias)
+
+    def test_citacoes_da_justificacao_tem_referencia(self):
+        minuta = (RAIZ / "docs" / "minuta-modelo.md").read_text(encoding="utf-8")
+        citadas = set(re.findall(r"\[(\d+)\]", minuta[:minuta.index("## Referências")]))
+        listadas = set(re.findall(r"^(\d+)\. ", self.referencias, flags=re.M))
+        self.assertEqual(citadas, listadas)
+        self.assertEqual(sorted(listadas, key=int), [str(n) for n in range(1, len(listadas) + 1)])
 
 
 if __name__ == "__main__":

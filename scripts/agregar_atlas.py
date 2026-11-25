@@ -7,6 +7,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import tempfile
 
 METRICAS = {
@@ -35,12 +36,12 @@ def agregar(origem, edicao, sha256):
         grupo = GRUPOS.get((linha["descricao_tipologia"] or "").strip())
         if not grupo:
             continue
-        if not linha["Data_Evento"] or linha.get(None):
+        if None in linha.values() or linha.get(None) or not linha["Data_Evento"].strip():
             raise ValueError(f"linha {numero}: registro incompleto ou CSV malformado")
-        try:
-            ano = int(linha["Data_Evento"].strip().split("/")[-1][:4])
-        except ValueError as erro:
-            raise ValueError(f"linha {numero}: data inválida") from erro
+        texto_ano = linha["Data_Evento"].strip().split("/")[-1]
+        if not re.fullmatch(r"\d{4}", texto_ano):
+            raise ValueError(f"linha {numero}: data inválida ({linha['Data_Evento']!r})")
+        ano = int(texto_ano)
         if not PRIMEIRO_ANO <= ano <= ULTIMO_ANO:
             continue
         uf = linha["Sigla_UF"].strip().upper()
@@ -87,7 +88,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("csv", type=Path)
     parser.add_argument("--edicao", required=True, help='ex.: "1991–2025 · v1.1 · 06/08/2026"')
-    parser.add_argument("--saida", type=Path, default=Path("dados/impactos.json"))
+    parser.add_argument("--saida", type=Path, default=Path(__file__).resolve().parents[1] / "dados/impactos.json")
     args = parser.parse_args()
     with args.csv.open("rb") as arquivo:
         sha256 = hashlib.file_digest(arquivo, "sha256").hexdigest()

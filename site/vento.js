@@ -94,6 +94,7 @@ function atualizarControles() {
   desenhar();
 }
 
+if (!ctx || !("ResizeObserver" in window)) canvas.setAttribute("aria-hidden", "true");
 if (ctx && "ResizeObserver" in window) {
   controles.hidden = false;
   if ("IntersectionObserver" in window) {

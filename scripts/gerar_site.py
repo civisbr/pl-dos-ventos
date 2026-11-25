@@ -194,8 +194,8 @@ def montar(nome, modelo, substituicoes):
     return MARCADOR.sub(lambda achado: substituicoes[achado.group()], modelo)
 
 
-def escrever(nome, substituicoes, titulo, descricao, saida=None, modelo=None):
-    pagina = (ROOT / "site" / (modelo or nome)).read_text(encoding="utf-8")
+def escrever(nome, substituicoes, titulo, descricao, saida=None):
+    pagina = (ROOT / "site" / nome).read_text(encoding="utf-8")
     substituicoes = {**substituicoes, "@@CABECA@@": cabeca(saida or nome, titulo, descricao)}
     (DIST / (saida or nome)).write_text(montar(nome, pagina, substituicoes), encoding="utf-8")
 
@@ -215,7 +215,8 @@ def main():
     comuns = {"@@PERIODO@@": escape(periodo), "@@EDICAO@@": escape(edicao)}
     sul_ventos = sorted(((uf, ventos[uf]) for uf in SUL), key=lambda item: -item[1]["moradias"])
 
-    shutil.rmtree(DIST, ignore_errors=True)
+    if DIST.exists():
+        shutil.rmtree(DIST)
     DIST.mkdir()
     escrever("index.html", {
         **comuns,
