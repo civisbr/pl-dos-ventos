@@ -23,9 +23,3 @@ O [site do PL dos Ventos](https://civisbr.github.io/pl-dos-ventos/) apresenta a 
 Os dados são provenientes do Atlas Digital de Desastres no Brasil, do Ministério da Integração e do Desenvolvimento Regional, com registros de 1991 a 2025. Vendavais e ciclones são apresentados separadamente dos tornados.
 
 Os totais permitem consultar registros de desastres, danos humanos diretos e unidades habitacionais danificadas ou destruídas. São contagens administrativas acumuladas: não representam pessoas ou imóveis únicos, não isolam danos nas coberturas e não medem risco individual. A [metodologia](dados/metodologia.md) detalha as regras de leitura e reprodução.
-
-## Identidade visual e site
-
-O site reproduz o [modelo editorial de referência](https://civisbr-ventos-editorial.futureeel2.chatgpt.site/), com campo de vento didático, comparador de dados e tabelas para consulta.
-
-Os assets Ventos Brisa estão versionados neste repositório, em [site/assets](site/assets/): [logo](site/assets/logo-ventos-brisa.png), [ícone original](site/assets/icone-ventos-brisa.png), [ícone otimizado para o cabeçalho](site/assets/icone-ventos.png) e [favicon](site/assets/favicon-ventos-brisa.ico). As páginas utilizam arquivos locais, sem depender de Downloads ou de imagens hospedadas no modelo de referência.
