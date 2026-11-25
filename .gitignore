@@ -1,2 +1,4 @@
 _dist/
 __pycache__/
+*.patch
+.serena/
