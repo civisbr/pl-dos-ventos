@@ -1,46 +1,31 @@
-# Reforço preventivo de coberturas contra ventos fortes
+<p align="center"><img src="site/assets/logo-ventos-brisa.png" width="520" alt="PL dos Ventos · CivisBR"></p>
 
-Proposta cidadã do CivisBR para três encaminhamentos estaduais independentes: Rio Grande do Sul, Santa Catarina e Paraná. O piloto fortalece coberturas antes do primeiro dano e prioriza moradias vulneráveis de famílias de baixa renda.
+# PL dos Ventos
 
-A minuta é preliminar e está disponível para análise técnica e legislativa.
+Proposta cidadã do **CivisBR** para o reforço preventivo de coberturas contra ventos fortes, com três encaminhamentos estaduais independentes: Rio Grande do Sul, Santa Catarina e Paraná.
 
-## Documentos e dados
+A iniciativa propõe identificar e reforçar coberturas vulneráveis **antes do primeiro dano**, com prioridade para moradias de famílias de baixa renda em áreas expostas. O piloto prevê diagnóstico no imóvel, assistência técnica, apoio à execução do reforço e vistoria final. A participação independe de dano anterior à moradia ou de declaração de emergência.
 
-- [Minuta-modelo estadual](docs/minuta-modelo.md)
-- [Encaminhamentos para RS, SC e PR](docs/encaminhamentos.md)
-- [Proposições e instrumentos correlatos](docs/verificacao-projetos-existentes.md)
-- [Metodologia e instruções de reprodução do Atlas](dados/metodologia.md)
-- [Totais por unidade da Federação](dados/impactos.json)
+**A minuta é preliminar e depende de revisão jurídica externa. Não se trata de proposição legislativa oficial nem de programa público em execução.** Os textos são disponibilizados para consulta pública e avaliação técnica e legislativa.
 
-## Acompanhar as manifestações
+## Consultar o projeto
 
-A linha do tempo publica um resumo das movimentações confirmadas de cada sugestão. O [portal de acompanhamento do RS](https://ouvidoriageral.al.rs.gov.br/acompanhe-sua-manifestacao) exige Gov.br, e a primeira versão depende de consulta humana aos canais oficiais. O GitHub Actions valida o histórico e publica o site após cada atualização incorporada à branch `main`.
+O [site do PL dos Ventos](https://civisbr.github.io/pl-dos-ventos/) apresenta a proposta, permite comparar dados por estado e reúne as movimentações confirmadas das sugestões estaduais.
 
-Após obter confirmação pelo canal oficial:
+- [Minuta-modelo estadual](docs/minuta-modelo.md): texto preliminar e justificação da proposta.
+- [Encaminhamentos para RS, SC e PR](docs/encaminhamentos.md): contexto local e canais das Assembleias Legislativas.
+- [Proposições e instrumentos correlatos](docs/verificacao-projetos-existentes.md): referências para a análise da iniciativa.
+- [Metodologia dos dados](dados/metodologia.md): fonte, recorte, indicadores e limitações.
+- [Totais por unidade da Federação](dados/impactos.json): dados agregados em formato aberto.
 
-1. Edite [dados/acompanhamento.json](dados/acompanhamento.json) na chave do estado. Acrescente a movimentação no final da lista, em ordem cronológica. Se o aviso não informar a data da movimentação, use a data da consulta e indique essa circunstância no resumo.
-2. Registre apenas a data, a etapa e um resumo público, conforme o exemplo fictício abaixo. Guarde o número do protocolo, recibos, credenciais, anexos, dados pessoais e respostas integrais fora do repositório, inclusive de issues, PRs e logs do Actions.
-3. Abra um pull request. Depois da validação e da revisão do resumo, incorpore o PR à `main`. O site mostra a movimentação mais recente primeiro.
+## Dados que fundamentam a proposta
 
-```json
-{
-  "data": "2027-01-15",
-  "etapa": "encaminhada",
-  "resumo": "A Ouvidoria informou que a sugestão foi encaminhada ao setor legislativo."
-}
-```
+Os dados são provenientes do Atlas Digital de Desastres no Brasil, do Ministério da Integração e do Desenvolvimento Regional, com registros de 1991 a 2025. Vendavais e ciclones são apresentados separadamente dos tornados.
 
-Etapas disponíveis: `registrada`, `encaminhada`, `em_analise`, `respondida`, `encerrada`, `proposicao_publicada` e `outra`. Registre a existência de proposição formal somente após confirmação na fonte legislativa pública.
+Os totais permitem consultar registros de desastres, danos humanos diretos e unidades habitacionais danificadas ou destruídas. São contagens administrativas acumuladas: não representam pessoas ou imóveis únicos, não isolam danos nas coberturas e não medem risco individual. A [metodologia](dados/metodologia.md) detalha as regras de leitura e reprodução.
 
-## GitHub Pages
+## Identidade visual e site
 
-O site é estático e usa caminhos relativos para funcionar em um repositório de projeto. Em **Settings → Pages**, selecione **GitHub Actions** como fonte de publicação. A primeira execução pode ser iniciada na aba **Actions → Validar e publicar o site → Run workflow**, na branch `main`. Em seguida, cada atualização da `main` gera uma nova publicação.
+O site reproduz o [modelo editorial de referência](https://civisbr-ventos-editorial.futureeel2.chatgpt.site/), com campo de vento didático, comparador de dados e tabelas para consulta.
 
-Para visualizar localmente, use Python 3.11 ou superior:
-
-```sh
-python3 scripts/gerar_site.py
-python3 -m http.server 8000 --directory _dist
-```
-
-Abra `http://localhost:8000`. A página **Dados** separa vendavais e ciclones de tornados e compara danos humanos e habitacionais entre UFs. A geração local e o deploy usam somente os totais já agregados. A atualização da série do Atlas tem procedimento próprio documentado na metodologia.
+Os assets Ventos Brisa estão versionados neste repositório, em [site/assets](site/assets/): [logo](site/assets/logo-ventos-brisa.png), [ícone original](site/assets/icone-ventos-brisa.png), [ícone otimizado para o cabeçalho](site/assets/icone-ventos.png) e [favicon](site/assets/favicon-ventos-brisa.ico). As páginas utilizam arquivos locais, sem depender de Downloads ou de imagens hospedadas no modelo de referência.

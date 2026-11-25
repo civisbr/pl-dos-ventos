@@ -76,7 +76,14 @@ def acompanhar(uf, eventos):
         '<ol class="registro">' + "".join(reversed(itens)) + "</ol>"
         if itens else "<p>Sem movimentações confirmadas publicadas.</p>"
     )
-    return f"<article><h3>{UFS[uf]}</h3>{historico}</article>"
+    situacao = (
+        f'{ETAPAS[eventos[-1]["etapa"]]} · {anterior:%d/%m/%Y}'
+        if eventos else "Sem movimentações publicadas"
+    )
+    return (
+        f'<details><summary><span>{UFS[uf]}</span><small>{situacao}</small></summary>'
+        f'{historico}</details>'
+    )
 
 
 def tabela(dados, legenda):
@@ -136,27 +143,30 @@ def main():
     historico = "".join(acompanhar(uf, eventos[uf]) for uf in SUL)
     impactos = preparar_impactos()
     ventos = impactos["vendavais_ciclones"]
-    destaques = []
-    for chave in ("ocorrencias", "atingidos", "moradias", "moradias_destruidas"):
-        pico = max(dados[chave] for dados in ventos.values())
-        lideres = ", ".join(UFS[uf] for uf, dados in ventos.items() if dados[chave] == pico)
-        destaques.append(
-            f'<article><h3>{METRICAS[chave]}</h3><p class="numero">{numero(pico)}</p>'
-            f'<p>{lideres}</p></article>'
-        )
+    explorador = json.dumps(
+        {"ufs": UFS, "sul": SUL, "grupos": impactos},
+        ensure_ascii=False, separators=(",", ":"),
+    ).replace("<", "\\u003c")
 
     DIST.mkdir(exist_ok=True)
-    escrever("index.html", {"@@ACOMPANHAMENTO@@": historico})
+    escrever("index.html", {
+        "@@ACOMPANHAMENTO@@": historico,
+        "@@DADOS_EXPLORADOR@@": explorador,
+        "@@REGISTROS_SUL@@": numero(sum(ventos[uf]["ocorrencias"] for uf in SUL)),
+        "@@REGISTROS_BRASIL@@": numero(sum(dados["ocorrencias"] for dados in ventos.values())),
+    })
     escrever("dados.html", {
-        "@@DESTAQUES@@": "".join(destaques),
+        "@@DADOS_EXPLORADOR@@": explorador,
         "@@VENTOS@@": comparacao(ventos),
         "@@TORNADOS@@": comparacao(impactos["tornados"]),
     })
     for arquivo in (
-        "site/estilos.css", "docs/minuta-modelo.md", "docs/encaminhamentos.md",
+        "site/estilos.css", "site/vento.js", "site/explorar.js",
+        "docs/minuta-modelo.md", "docs/encaminhamentos.md",
         "dados/metodologia.md", "dados/impactos.json",
     ):
         shutil.copyfile(ROOT / arquivo, DIST / Path(arquivo).name)
+    shutil.copytree(ROOT / "site/assets", DIST / "assets", dirs_exist_ok=True)
 
 
 if __name__ == "__main__":
