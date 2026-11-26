@@ -141,6 +141,11 @@ def comparacao(dados):
     )
 
 
+def periodo_extenso(edicao):
+    inicio, fim = re.match(r"(\d{4})–(\d{4}) · ", edicao).groups()
+    return f"{inicio} a {fim}"
+
+
 def preparar_impactos():
     base = carregar("impactos.json")
     if not re.fullmatch(r"\d{4}–\d{4} · v\d+(\.\d+)* · \d{2}/\d{2}/\d{4}", str(base.get("edicao"))) or not re.fullmatch(r"[0-9a-f]{64}", str(base.get("sha256_csv"))):
@@ -206,7 +211,7 @@ def main():
         raise ValueError("A linha do tempo deve conter SC, RS e PR")
     historico = "".join(acompanhar(uf, eventos[uf]) for uf in SUL)
     edicao, impactos = preparar_impactos()
-    periodo = edicao.split(" · ")[0]
+    periodo = periodo_extenso(edicao)
     ventos = impactos["vendavais_ciclones"]
     explorador = json.dumps(
         {"ufs": UFS, "sul": SUL, "grupos": impactos},

@@ -68,6 +68,9 @@ class Montagem(unittest.TestCase):
         self.assertIn("Content-Security-Policy", html)
         self.assertIn('rel="canonical"', html)
 
+    def test_periodo_por_extenso(self):
+        self.assertEqual(gerar_site.periodo_extenso("1991–2025 · v1.1 · 06/08/2026"), "1991 a 2025")
+
     def test_site_gerado(self):
         gerar_site.main()
         dist = gerar_site.DIST
@@ -76,6 +79,8 @@ class Montagem(unittest.TestCase):
             self.assertNotRegex(texto, r"@@[A-Z_]+@@", arquivo.name)
             self.assertIn("Content-Security-Policy", texto, arquivo.name)
         self.assertIn("sitemap.xml", (dist / "robots.txt").read_text())
+        self.assertRegex((dist / "index.html").read_text(encoding="utf-8"), r"De \d{4} a \d{4},")
+        self.assertTrue((dist / "minuta-modelo.html").exists())
         self.assertIn("<urlset", (dist / "sitemap.xml").read_text())
 
 

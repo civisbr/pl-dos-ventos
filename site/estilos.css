@@ -47,6 +47,7 @@ nav a:hover, nav a[aria-current] { text-decoration: underline; text-underline-of
 .abertura h1 em { display: block; color: var(--mar); font-style: normal; }
 .abertura .introducao { color: var(--azul-suave); }
 .abertura .introducao strong { color: var(--marinho); }
+.estagio { margin-bottom: .75rem; font: 700 .8rem/1.4 system-ui, sans-serif; letter-spacing: .04em; text-transform: uppercase; color: var(--azul-suave); }
 .nota-dado { max-width: 52ch; margin-top: .6rem; font-size: .875rem; color: var(--azul-suave); }
 .abertura .link-texto { color: var(--mar); }
 .abertura .botao { background: var(--mar); color: var(--branco); }
