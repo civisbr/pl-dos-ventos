@@ -44,6 +44,7 @@ CSP = (
 DOCUMENTOS = {
     "minuta-modelo": ("docs/minuta-modelo.md", "Minuta-modelo de projeto de lei estadual", "Texto-modelo preliminar do programa estadual de reforço preventivo de coberturas contra ventos fortes."),
     "encaminhamentos": ("docs/encaminhamentos.md", "Encaminhamentos estaduais", "Canais, dados locais e mensagem para encaminhar a proposta às Assembleias do RS, SC e PR."),
+    "piloto-rs": ("docs/piloto-rs.md", "Ficha de piloto orçada: Rio Grande do Sul", "Estimativa preliminar do custo de um piloto com 50 vistorias e cerca de 30 obras, com preços do SINAPI."),
     "metodologia": ("dados/metodologia.md", "Metodologia dos dados", "Como os registros do Atlas Digital de Desastres foram agregados e quais são os limites da comparação."),
 }
 ETAPAS = {
@@ -245,7 +246,7 @@ def main():
         }, f"{titulo} · PL dos Ventos", descricao, saida=f"{stem}.html")
     for arquivo in (
         "site/estilos.css", "site/vento.js", "site/explorar.js",
-        "docs/minuta-modelo.md", "docs/encaminhamentos.md",
+        "docs/minuta-modelo.md", "docs/encaminhamentos.md", "docs/piloto-rs.md",
         "dados/metodologia.md", "dados/impactos.json",
     ):
         shutil.copyfile(ROOT / arquivo, DIST / Path(arquivo).name)

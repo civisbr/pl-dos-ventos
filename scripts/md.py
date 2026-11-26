@@ -7,6 +7,7 @@ LINK_INTERNO = {
     "../dados/metodologia.md": "metodologia.html",
     "minuta-modelo.md": "minuta-modelo.html",
     "encaminhamentos.md": "encaminhamentos.html",
+    "piloto-rs.md": "piloto-rs.html",
     "impactos.json": "impactos.json",
 }
 ORDENADA = re.compile(r"\d{1,2}\. ")

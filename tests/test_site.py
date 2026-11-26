@@ -1,3 +1,4 @@
+import csv
 import io
 import json
 from pathlib import Path
@@ -10,7 +11,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
 import agregar_atlas
 import gerar_site
-from md import converter
+from md import LINK_INTERNO, converter
 
 RAIZ = Path(__file__).resolve().parents[1]
 CABECALHO = "Sigla_UF;Data_Evento;descricao_tipologia;DH_total_danos_humanos_diretos;DM_Uni Habita Danificadas;DM_Uni Habita Destruidas\n"
@@ -81,6 +82,8 @@ class Montagem(unittest.TestCase):
         self.assertIn("sitemap.xml", (dist / "robots.txt").read_text())
         self.assertRegex((dist / "index.html").read_text(encoding="utf-8"), r"De \d{4} a \d{4},")
         self.assertTrue((dist / "minuta-modelo.html").exists())
+        for destino in LINK_INTERNO.values():
+            self.assertTrue((dist / destino).exists(), destino)
         self.assertIn("<urlset", (dist / "sitemap.xml").read_text())
 
 
@@ -188,6 +191,34 @@ class FontesExternas(unittest.TestCase):
         listadas = set(re.findall(r"^(\d+)\. ", self.referencias, flags=re.M))
         self.assertEqual(citadas, listadas)
         self.assertEqual(sorted(listadas, key=int), [str(n) for n in range(1, len(listadas) + 1)])
+
+
+class PilotoRS(unittest.TestCase):
+    def test_subtotais_fecham_com_o_extrato_sinapi(self):
+        with open(RAIZ / "dados" / "sinapi-2026-10-rs.csv", encoding="utf-8") as f:
+            p = {linha["codigo"]: float(linha["custo_rs"]) for linha in csv.DictReader(f)}
+        ligacoes = 16 * p["88323"] + 16 * p["88316"]
+        niveis = (
+            ligacoes,
+            60 * (p["97647"] + p["97650"] + p["92543"] + p["94207"]) + ligacoes,
+            60 * (p["97647"] + p["97650"] + p["92539"] + p["94440"]) + 960 * p["94232"] + 8 * p["94221"] + ligacoes,
+        )
+        bdi = 1.2212
+        horas = (4 * p["90777"], 3 * p["90777"], 2 * p["90777"])
+        tecnico = 50 * horas[0] + 30 * horas[1] + 30 * horas[2]
+        obras = sum(q * n for q, n in zip((15, 10, 5), niveis))
+        direto = tecnico + obras
+        ficha = (RAIZ / "docs" / "piloto-rs.md").read_text(encoding="utf-8")
+        valores = (
+            *horas, 50 * horas[0], 30 * horas[1], 30 * horas[2], *niveis,
+            *(q * n for q, n in zip((15, 10, 5), niveis)),
+            direto, direto * bdi, tecnico + obras * bdi,
+        )
+        for valor in valores:
+            self.assertIn(f"{valor:,.2f}".replace(",", "X").replace(".", ",").replace("X", "."), ficha)
+        self.assertIn("BDI de 22,12%", ficha)
+        self.assertIn(f"R$ {round(direto * bdi / 30):,}".replace(",", "."), ficha)
+        self.assertIn(f"R$ {round(20 * horas[0] * bdi):,}".replace(",", "."), ficha)
 
 
 if __name__ == "__main__":
