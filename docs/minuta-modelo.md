@@ -6,23 +6,31 @@ Modelo para três encaminhamentos estaduais independentes, ao Rio Grande do Sul,
 
 ## Articulado
 
-**Ementa.** Institui o Programa Estadual de Reforço Preventivo de Coberturas contra Ventos Fortes.
+**Ementa.** Institui o Programa Estadual de Reforço Preventivo de Coberturas contra Ventos Fortes e o Selo Estadual de Reforço Preventivo de Cobertura.
 
 **Art. 1º** Fica instituído o Programa Estadual de Reforço Preventivo de Coberturas contra Ventos Fortes, com a finalidade de reduzir o risco de destelhamento e os danos às pessoas e às edificações mediante diagnóstico técnico e intervenções antes da ocorrência de desastres.
 
-**Parágrafo único.** A participação no Programa independe de dano anterior ao imóvel ou de declaração de situação de emergência ou de estado de calamidade pública.
+**§ 1º** A participação no Programa independe de dano anterior ao imóvel ou de declaração de situação de emergência ou de estado de calamidade pública.
+
+**§ 2º** Para os efeitos desta Lei, considera-se:
+
+I – cobertura: o telhado, a estrutura que o sustenta e as ligações dessa estrutura com as paredes ou com outros elementos de apoio;
+
+II – ventos fortes: eventos de vento severo, como vendavais e ciclones, nos termos do regulamento, que definirá também o tratamento dos tornados.
 
 **Art. 2º** São diretrizes do Programa:
 
 I – adesão voluntária dos particulares e respeito às competências municipais relativas ao licenciamento, às edificações e ao uso do solo;
 
-II – prioridade a moradias de famílias de baixa renda conforme a exposição territorial a ventos fortes e a vulnerabilidade da cobertura, identificada em avaliação técnica;
+II – prioridade, conforme a exposição territorial a ventos fortes e a vulnerabilidade da cobertura, identificada em avaliação técnica, a moradias de famílias de baixa renda, definidas por critério objetivo em regulamento;
 
 III – integração com os instrumentos estaduais de habitação e proteção e defesa civil;
 
-IV – avaliação dos resultados e publicação de dados agregados;
+IV – avaliação dos resultados e publicação de dados agregados, sem permitir a identificação das famílias;
 
-V – respeito às restrições de ocupação em áreas de risco e, quando cabível, encaminhamento a medidas de proteção habitacional adequadas.
+V – respeito às restrições de ocupação em áreas de risco e, quando a intervenção não for cabível, encaminhamento da família a medidas de proteção habitacional adequadas;
+
+VI – tratamento dos dados pessoais dos beneficiários restrito às finalidades do Programa, observada a Lei federal nº 13.709, de 14 de agosto de 2018.
 
 **Art. 3º** O apoio preventivo poderá abranger:
 
@@ -42,7 +50,11 @@ IV – acompanhamento da execução, vistoria final e entrega de orientações d
 
 **§ 2º** A metodologia poderá prever critérios distintos para edificações novas e existentes, conforme o escopo das normas técnicas aplicáveis e do protocolo estadual de vistoria.
 
-**Art. 5º** O atendimento será comprovado por registro técnico de execução e vistoria final. A intervenção poderá receber o Selo Estadual de Reforço Preventivo de Cobertura, com indicação dos elementos vistoriados, do alcance da avaliação e das condições de validade definidas em regulamento.
+**§ 3º** Fragilidades identificadas fora do escopo da intervenção, como na ligação entre as paredes e a fundação, serão registradas e comunicadas ao responsável pelo imóvel.
+
+**§ 4º** O profissional que executar a intervenção, ou a ele vinculado, não poderá realizar a vistoria final dessa mesma intervenção.
+
+**Art. 5º** O atendimento será comprovado por registro técnico de execução e vistoria final. Fica instituído o Selo Estadual de Reforço Preventivo de Cobertura, que a intervenção poderá receber, com indicação dos elementos vistoriados, do alcance da avaliação e das condições de validade definidas em regulamento.
 
 **§ 1º** O selo é declaratório da intervenção verificada, e seu alcance fica limitado aos elementos e condições registrados na vistoria.
 
@@ -71,9 +83,16 @@ A experiência comparada indica caminhos e limites, e as fontes estão listadas 
 - Confirmar com especialistas em engenharia estrutural e habitacional o escopo das normas citadas, com base no texto vigente de cada uma (de acesso pago), e o protocolo de vistoria.
 - Validar a iniciativa legislativa em cada estado, incluindo a [Constituição estadual e o Tema 917 do STF](https://portal.stf.jus.br/jurisprudenciaRepercussao/tema.asp?num=917). Caso a implementação envolva atribuições administrativas reservadas ou demande decisão do Executivo, avaliar indicação parlamentar ou proposta de sua iniciativa.
 - Definir o veículo, a unidade executora, o orçamento e o alcance do apoio, incluindo diagnóstico, projeto, materiais, mão de obra e vistoria. Verificar o art. 113 do ADCT e os arts. 16 e 17 da [Lei de Responsabilidade Fiscal](https://planalto.gov.br/ccivil_03/leis/lcp/lcp101.htm), conforme o desenho adotado.
-- Avaliar o custo e a capacidade de vistoria antes de fixar validade, renovação ou equivalência de selos.
+- Avaliar o custo e a capacidade de vistoria antes de fixar validade, renovação, cassação por fraude ou alteração posterior e equivalência de selos, bem como a verificação da autenticidade de cada selo por código, sem divulgar dados pessoais nem o endereço do imóvel. A cassação é uma sanção e pode exigir previsão em lei, não só em regulamento.
+- Definir com jurista se a lei pode fixar prazo para a regulamentação, pois impor prazo ao Executivo pode ser questionado como vício de iniciativa.
+- Definir o alcance do apoio: tipologias (residencial, comercial, rural, locado, condomínio) e beneficiários elegíveis.
+- Fixar o critério objetivo de baixa renda (por exemplo, inscrição no CadÚnico ou faixa de renda), o limite de um atendimento por imóvel e a ordem de atendimento. Antes do piloto, avaliar o relatório de impacto à proteção de dados pessoais e o risco de que dados agregados em município pequeno identifiquem famílias. A competência privativa da União sobre proteção de dados (Constituição, art. 22, XXX) limita regras próprias do estado.
+- Avaliar a articulação com a [Lei federal nº 11.888/2008](https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/lei/l11888.htm), que assegura assistência técnica pública e gratuita para projeto e construção de habitação de interesse social a famílias com renda de até três salários mínimos, e conferir no art. 2º se ela alcança o reforço de casas existentes.
+- Prever em regulamento, para os recursos do apoio, a medição antes do desembolso, o pagamento direto ao executor, a tabela de referência de preços, o teto por moradia, a devolução em caso de desvio e a vistoria amostral por terceiro. Tratar também os casos especiais: telhas de fibrocimento com amianto, bens tombados, estrutura com cupim ou corrosão e segurança do trabalho em altura.
+- Prever cooperação com os municípios para o licenciamento, para compatibilizar o licenciamento e reduzir o risco de embargo de obra apoiada pelo Estado.
+- Detalhar o desenho da avaliação do piloto, com comparação com imóveis sem intervenção, a intensidade do vento em cada evento e a taxa de destelhamento como indicador principal.
 - Verificar com jurista a competência para qualquer efeito do selo sobre seguros: legislar sobre seguros é matéria da União ([Constituição, art. 22, VII](https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm)). Um estado provavelmente só pode criar o selo e prever seu reconhecimento voluntário; descontos dependem de regulação federal ou de acordo com as seguradoras.
-- Identificar as normas técnicas brasileiras aplicáveis a reforço de cobertura e ligações, incluindo a ABNT NBR 16280 (reforma em edificações), ainda não avaliada, pois os estudos citados na Justificação usam normas e sistemas construtivos de outro país.
+- Identificar as normas técnicas brasileiras aplicáveis a reforço de cobertura e ligações, incluindo a ABNT NBR 16280 (reforma em edificações) e a ABNT NBR 16747 (inspeção predial), ainda não avaliadas, pois os estudos citados na Justificação usam normas e sistemas construtivos de outro país.
 - Pesquisar diretamente as proposições e normas estaduais e municipais relevantes. A existência de ações correlatas deve ser documentada na nota de cada estado.
 
 ## Referências
