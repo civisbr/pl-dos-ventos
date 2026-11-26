@@ -13,7 +13,7 @@ Esta ficha estima a ordem de grandeza do custo de um piloto do programa previsto
 
 ## Fonte dos preços
 
-Custos do [SINAPI](https://www.caixa.gov.br/poder-publico/modernizacao-gestao/sinapi/Paginas/default.aspx) (Caixa e IBGE), mês de referência outubro de 2026, relatório de composições com encargos sociais sem desoneração, localidade Porto Alegre. Os preços de outros municípios podem diferir. Arquivo consultado: [SINAPI-2026-10-formato-xlsx.zip](https://www.caixa.gov.br/Downloads/sinapi-relatorios-mensais/SINAPI-2026-10-formato-xlsx.zip), emitido em 12/11/2026 e baixado em 26/11/2026 (SHA-256 2e99cde7594353af311963d93c6defcc89bbd62de64d8282c2335c5e9a7c66d4). O extrato das composições usadas, com a aba e a linha de origem na planilha, está no repositório em `dados/sinapi-2026-10-rs.csv`.
+Custos do [SINAPI](https://www.caixa.gov.br/poder-publico/modernizacao-gestao/sinapi/Paginas/default.aspx) (Caixa e IBGE), mês de referência outubro de 2026, relatório de composições com encargos sociais sem desoneração, localidade Porto Alegre. Os preços de outros municípios podem diferir. Arquivo consultado: [SINAPI-2026-10-formato-xlsx.zip](https://www.caixa.gov.br/Downloads/sinapi-relatorios-mensais/SINAPI-2026-10-formato-xlsx.zip), emitido em 12/11/2026 e baixado em 26/11/2026 (SHA-256 2e99cde7594353af311963d93c6defcc89bbd62de64d8282c2335c5e9a7c66d4). O extrato das composições usadas, com a aba e a linha de origem na planilha, está no repositório em [dados/sinapi-2026-10-rs.csv](https://github.com/civisbr/pl-dos-ventos/blob/main/dados/sinapi-2026-10-rs.csv).
 
 | Código | Composição SINAPI (resumo) | Unidade | Custo RS (R$) |
 |---|---|---|---|
@@ -42,9 +42,11 @@ As horas técnicas e as quantidades são hipóteses desta ficha, a ajustar com o
 | Obra de nível 2 | Remoção das telhas e da trama existentes e execução de terças novas de madeira com telha ondulada de fibrocimento sem amianto, de 6 mm, em 60 m², mais o nível 1 | 6.407,56 | 10 | 64.075,60 |
 | Obra de nível 3 | Remoção das telhas e da trama existentes e execução de trama completa de madeira com telha cerâmica francesa em 60 m², amarração de todas as telhas (16 por m², hipótese: 960 telhas), 8 m de cumeeira, mais o nível 1 | 15.274,04 | 5 | 76.370,20 |
 | **Custo direto** | | | | **202.529,70** |
-| **Com BDI de 22,12%** | | | | **247.329,27** |
+| **Subtotal dos itens estimados, com BDI de 22,12%** | | | | **247.329,27** |
 
-O BDI usado é o valor médio de referência para construção de edifícios no [Acórdão nº 2.622/2013 do TCU](https://www.mpf.mp.br/o-mpf/unidades/pr-to/transparencia/licitacoes-novo/2016/12Acordao26222013BDI.pdf) (faixa de 20,34% a 25,00%). A taxa efetiva depende da forma de contratação. Aqui o BDI incide também sobre diagnóstico, projeto e vistoria, que costumam ser contratados à parte; se incidir só sobre as obras, o total fica em R$ 236.567,12. A área de 60 m² é tratada como área de telhamento, sem fator de inclinação.
+Conectores e fixações estruturais, trabalho em altura, deslocamentos e os demais itens listados em "O que não está incluído" ainda precisam ser orçados. O subtotal acima não é o custo completo do piloto.
+
+O BDI usado é o valor médio de referência para construção de edifícios no [Acórdão nº 2.622/2013 do TCU](https://www.mpf.mp.br/o-mpf/unidades/pr-to/transparencia/licitacoes-novo/2016/12Acordao26222013BDI.pdf) (faixa de 20,34% a 25,00%). A taxa efetiva depende da forma de contratação. Aqui o BDI incide também sobre diagnóstico, projeto e vistoria, que costumam ser contratados à parte; se incidir só sobre as obras, o subtotal fica em R$ 236.567,12. A área de 60 m² é tratada como área de telhamento, sem fator de inclinação.
 
 Com BDI, o custo médio fica em cerca de R$ 8.244 por obra concluída (R$ 247.329,27 divididos por 30), incluídas as vistorias sem obra. Essas 20 vistorias custam cerca de R$ 13.581 (20 × R$ 556,04 × 1,2212) e não reforçam nenhuma cobertura, mas produzem o diagnóstico e o encaminhamento da família.
 
