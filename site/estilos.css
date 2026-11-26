@@ -90,6 +90,7 @@ nav a:hover, nav a[aria-current] { text-decoration: underline; text-underline-of
 .secao h2 + p { margin-top: .75rem; }
 .ilustracao-piloto { margin: 1.5rem 0; }
 .ilustracao-piloto img { display: block; width: 100%; height: auto; border-radius: .4rem; }
+.custo-piloto { grid-column: 1 / -1; margin: 0; }
 .colunas { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 1.5rem clamp(2rem, 8vw, 7rem); }
 .texto-lateral { max-width: 42ch; color: var(--secundaria); }
 .etapas { margin: 0; padding-left: 1.75rem; }
