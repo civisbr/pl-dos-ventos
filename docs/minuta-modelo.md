@@ -1,6 +1,6 @@
 # Minuta-modelo de projeto de lei estadual
 
-**Proposta cidadã preliminar · CivisBR · 24 de novembro de 2026**
+**Proposta cidadã preliminar · CivisBR · publicada em 24 de novembro de 2026 · revisada em 26 de novembro de 2026**
 
 Modelo para três encaminhamentos estaduais independentes, ao Rio Grande do Sul, a Santa Catarina e ao Paraná. Cada Assembleia deve avaliar a redação e a via legislativa cabíveis em seu estado.
 
@@ -50,7 +50,7 @@ IV – acompanhamento da execução, vistoria final e entrega de orientações d
 
 **§ 2º** A metodologia poderá prever critérios distintos conforme o sistema construtivo da moradia e o tipo de intervenção, observados o escopo das normas técnicas aplicáveis e o protocolo estadual de vistoria.
 
-**§ 3º** Fragilidades identificadas fora do escopo da intervenção, como na ligação entre as paredes e a fundação, serão registradas e comunicadas ao morador e, se distinto, ao proprietário ou possuidor. Quando a fragilidade comprometer a eficácia do reforço, a intervenção não será iniciada ou será suspensa até nova avaliação técnica; persistindo o comprometimento, aplica-se o disposto no art. 2º, V.
+**§ 3º** Fragilidades identificadas fora do escopo da intervenção, como na ligação entre as paredes e a fundação, serão registradas e comunicadas ao morador e, se distinto, ao proprietário ou possuidor. Quando a fragilidade comprometer a eficácia do reforço, a intervenção não será iniciada ou será suspensa até nova avaliação técnica; persistindo o comprometimento, aplica-se o disposto no art. 2º, V. Na hipótese de não início ou de suspensão, o morador e, se distinto, o proprietário ou possuidor receberão registro escrito da conclusão técnica, de seus fundamentos e do encaminhamento indicado, observado o art. 2º, VI.
 
 **§ 4º** O profissional que executar a intervenção, ou profissional a ele vinculado nos termos do regulamento, não poderá realizar a vistoria final dessa mesma intervenção.
 
