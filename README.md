@@ -14,6 +14,7 @@ O [site do PL dos Ventos](https://civisbr.github.io/pl-dos-ventos/) apresenta a 
 
 - [Minuta-modelo estadual](docs/minuta-modelo.md): texto preliminar e justificação da proposta.
 - [Encaminhamentos para RS, SC e PR](docs/encaminhamentos.md): contexto local e canais das Assembleias Legislativas.
+- [Ficha de piloto orçada para o RS](docs/piloto-rs.md): estimativa preliminar de custo com preços do SINAPI.
 - [Proposições e instrumentos correlatos](docs/verificacao-projetos-existentes.md): referências para a análise da iniciativa.
 - [Metodologia dos dados](dados/metodologia.md): fonte, recorte, indicadores e limitações.
 - [Totais por unidade da Federação](dados/impactos.json): dados agregados em formato aberto.
