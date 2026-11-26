@@ -8,7 +8,7 @@ Cada manifestação apresenta a mesma política preventiva, com justificação e
 
 **Canal.** [Ouvidoria da Assembleia Legislativa do RS](https://ouvidoriageral.al.rs.gov.br/envie-sua-manifestacao). Registrar como sugestão. O acompanhamento pelo portal requer identificação no Gov.br.
 
-**Adequação local.** A [Lei nº 16.138/2024](https://www.habitacao.rs.gov.br/upload/arquivos/202510/20120208-lei-16-138.pdf) prevê a modalidade A Casa é Sua – Reforma. O art. 41 da [LC nº 16.263/2024](https://www.defesacivil.rs.gov.br/upload/arquivos/202412/30150926-lei-complementar-n-16-263-de-27-de-dezembro-de-2024.pdf) inclui prevenção e mitigação entre as finalidades do FUNDEC. A [Resolução nº 014/FUNDEC/2026](https://sistemas.defesacivil.rs.gov.br/documentos/fundec/Resolucao_14-FUNDEC-2026_Telhas_Residuos.pdf) é um precedente de recomposição emergencial. A análise estadual deve verificar regras de elegibilidade e custeio antes de indicar uma fonte para as obras preventivas.
+**Adequação local.** A [Lei nº 16.138/2024](https://www.habitacao.rs.gov.br/upload/arquivos/202510/20120208-lei-16-138.pdf) prevê a modalidade A Casa é Sua – Reforma, que, pelo art. 7º, § 4º, inclui moradias de baixa renda em habitabilidade precária, hipótese que não depende de desastre anterior; resta saber se uma cobertura vulnerável se enquadra nela. O art. 10 exige titularidade ou processo de aquisição de direito real. A primeira pergunta à área de habitação é se essa modalidade pode atender o reforço preventivo e quais famílias ficariam de fora. O art. 41 da [LC nº 16.263/2024](https://www.defesacivil.rs.gov.br/upload/arquivos/202412/30150926-lei-complementar-n-16-263-de-27-de-dezembro-de-2024.pdf) inclui prevenção e mitigação entre as finalidades do FUNDEC. A [Resolução nº 014/FUNDEC/2026](https://sistemas.defesacivil.rs.gov.br/documentos/fundec/Resolucao_14-FUNDEC-2026_Telhas_Residuos.pdf) é um precedente de recomposição emergencial. A análise estadual deve verificar regras de elegibilidade e custeio antes de indicar uma fonte para as obras preventivas.
 
 ## Santa Catarina
 
@@ -30,6 +30,6 @@ Cada manifestação apresenta a mesma política preventiva, com justificação e
 
 **Assunto — Sugestão de programa estadual de reforço preventivo de coberturas contra ventos fortes**
 
-> Apresenta-se para avaliação uma minuta de programa estadual que propõe identificar e reforçar coberturas vulneráveis antes de vendavais. O piloto prevê diagnóstico, assistência técnica, apoio à execução e vistoria final, com prioridade a famílias de baixa renda em áreas expostas. A participação independe de dano anterior ao imóvel ou de declaração de emergência.
+> Apresenta-se para avaliação uma minuta de programa estadual que propõe identificar e reforçar coberturas vulneráveis de moradias existentes antes de vendavais. O piloto prevê diagnóstico, assistência técnica, apoio à execução e vistoria final, com prioridade a famílias de baixa renda em áreas expostas. A participação independe de dano anterior à moradia ou de declaração de emergência.
 >
 > Solicita-se o encaminhamento ao setor legislativo competente, a indicação da unidade destinatária e de um contato institucional para acompanhamento. A minuta e os dados comparativos seguem para subsidiar a análise de viabilidade no estado.

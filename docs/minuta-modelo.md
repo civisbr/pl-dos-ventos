@@ -8,9 +8,9 @@ Modelo para três encaminhamentos estaduais independentes, ao Rio Grande do Sul,
 
 **Ementa.** Institui o Programa Estadual de Reforço Preventivo de Coberturas contra Ventos Fortes e o Selo Estadual de Reforço Preventivo de Cobertura.
 
-**Art. 1º** Fica instituído o Programa Estadual de Reforço Preventivo de Coberturas contra Ventos Fortes, com a finalidade de reduzir o risco de destelhamento e os danos às pessoas e às edificações mediante diagnóstico técnico e intervenções antes da ocorrência de desastres.
+**Art. 1º** Fica instituído o Programa Estadual de Reforço Preventivo de Coberturas contra Ventos Fortes, com a finalidade de reduzir o risco de destelhamento de moradias existentes, urbanas ou rurais, e os danos às pessoas que nelas vivem, mediante diagnóstico técnico e apoio à execução de intervenções antes da ocorrência de desastres.
 
-**§ 1º** A participação no Programa independe de dano anterior ao imóvel ou de declaração de situação de emergência ou de estado de calamidade pública.
+**§ 1º** A participação no Programa independe de dano anterior à moradia ou de declaração de situação de emergência ou de estado de calamidade pública.
 
 **§ 2º** Para os efeitos desta Lei, considera-se:
 
@@ -44,21 +44,23 @@ IV – acompanhamento da execução, vistoria final e entrega de orientações d
 
 **Parágrafo único.** As regras de acesso poderão prever assistência técnica pública e gratuita e subsídio aos beneficiários elegíveis, observada a legislação aplicável e a disponibilidade orçamentária.
 
-**Art. 4º** A avaliação e o projeto da intervenção serão realizados por profissionais legalmente habilitados, com registro de responsabilidade técnica aplicável, conforme as normas pertinentes ao tipo de edificação e de intervenção.
+**Art. 4º** A avaliação e o projeto da intervenção serão realizados por profissionais legalmente habilitados, com registro de responsabilidade técnica aplicável, conforme as normas pertinentes ao sistema construtivo e ao tipo de intervenção.
 
 **§ 1º** Os critérios técnicos deverão considerar as ações de vento de projeto, a condição dos elementos existentes e a transmissão dos esforços da cobertura aos seus apoios, no escopo da intervenção.
 
-**§ 2º** A metodologia poderá prever critérios distintos para edificações novas e existentes, conforme o escopo das normas técnicas aplicáveis e do protocolo estadual de vistoria.
+**§ 2º** A metodologia poderá prever critérios distintos conforme o sistema construtivo da moradia e o tipo de intervenção, observados o escopo das normas técnicas aplicáveis e o protocolo estadual de vistoria.
 
-**§ 3º** Fragilidades identificadas fora do escopo da intervenção, como na ligação entre as paredes e a fundação, serão registradas e comunicadas ao responsável pelo imóvel.
+**§ 3º** Fragilidades identificadas fora do escopo da intervenção, como na ligação entre as paredes e a fundação, serão registradas e comunicadas ao morador e, se distinto, ao proprietário ou possuidor. Quando a fragilidade comprometer a eficácia do reforço, a intervenção não será iniciada ou será suspensa até nova avaliação técnica; persistindo o comprometimento, aplica-se o disposto no art. 2º, V.
 
-**§ 4º** O profissional que executar a intervenção, ou a ele vinculado, não poderá realizar a vistoria final dessa mesma intervenção.
+**§ 4º** O profissional que executar a intervenção, ou profissional a ele vinculado nos termos do regulamento, não poderá realizar a vistoria final dessa mesma intervenção.
 
 **Art. 5º** O atendimento será comprovado por registro técnico de execução e vistoria final. Fica instituído o Selo Estadual de Reforço Preventivo de Cobertura, que a intervenção poderá receber, com indicação dos elementos vistoriados, do alcance da avaliação e das condições de validade definidas em regulamento.
 
 **§ 1º** O selo é declaratório da intervenção verificada, e seu alcance fica limitado aos elementos e condições registrados na vistoria.
 
 **§ 2º** O selo poderá ser reconhecido, por adesão voluntária, por seguradoras e instituições financeiras, sem criar obrigação de contratação, desconto ou benefício tributário.
+
+**§ 3º** O morador receberá, independentemente da concessão do selo, documento que indique os elementos reforçados, os elementos não vistoriados, as fragilidades registradas na forma do art. 4º, § 3º, e a data da vistoria final, observado o art. 2º, VI.
 
 **Art. 6º** O Programa poderá ser implantado inicialmente em projeto-piloto, em cooperação com municípios, com divulgação de critérios de seleção e de resultados agregados.
 
@@ -82,13 +84,14 @@ A experiência comparada indica caminhos e limites, e as fontes estão listadas 
 
 - Confirmar com especialistas em engenharia estrutural e habitacional o escopo das normas citadas, com base no texto vigente de cada uma (de acesso pago), e o protocolo de vistoria.
 - Validar a iniciativa legislativa em cada estado, incluindo a [Constituição estadual e o Tema 917 do STF](https://portal.stf.jus.br/jurisprudenciaRepercussao/tema.asp?num=917). Caso a implementação envolva atribuições administrativas reservadas ou demande decisão do Executivo, avaliar indicação parlamentar ou proposta de sua iniciativa.
-- Definir o veículo, a unidade executora, o orçamento e o alcance do apoio, incluindo diagnóstico, projeto, materiais, mão de obra e vistoria. Verificar o art. 113 do ADCT e os arts. 16 e 17 da [Lei de Responsabilidade Fiscal](https://planalto.gov.br/ccivil_03/leis/lcp/lcp101.htm), conforme o desenho adotado.
+- Definir o veículo, a unidade executora, o orçamento e o alcance do apoio, incluindo diagnóstico, projeto, materiais, mão de obra e vistoria. Verificar o art. 113 do ADCT e os arts. 16 e 17 da [Lei de Responsabilidade Fiscal](https://planalto.gov.br/ccivil_03/leis/lcp/lcp101.htm), conforme o desenho adotado, e o art. 26 da mesma lei, que exige lei específica, atendimento às condições da LDO e previsão orçamentária para destinar recursos a pessoas físicas.
 - Avaliar o custo e a capacidade de vistoria antes de fixar validade, renovação, cassação por fraude ou alteração posterior e equivalência de selos, bem como a verificação da autenticidade de cada selo por código, sem divulgar dados pessoais nem o endereço do imóvel. A cassação é uma sanção e pode exigir previsão em lei, não só em regulamento.
 - Definir com jurista se a lei pode fixar prazo para a regulamentação, pois impor prazo ao Executivo pode ser questionado como vício de iniciativa.
-- Definir o alcance do apoio: tipologias (residencial, comercial, rural, locado, condomínio) e beneficiários elegíveis.
+- Definir os beneficiários elegíveis (proprietários, possuidores e inquilinos), a anuência do proprietário quando a moradia for alugada e o tratamento de moradias em condomínio.
 - Fixar o critério objetivo de baixa renda (por exemplo, inscrição no CadÚnico ou faixa de renda), o limite de um atendimento por imóvel e a ordem de atendimento. Antes do piloto, avaliar o relatório de impacto à proteção de dados pessoais e o risco de que dados agregados em município pequeno identifiquem famílias. A competência privativa da União sobre proteção de dados (Constituição, art. 22, XXX) limita regras próprias do estado.
-- Avaliar a articulação com a [Lei federal nº 11.888/2008](https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/lei/l11888.htm), que assegura assistência técnica pública e gratuita para projeto e construção de habitação de interesse social a famílias com renda de até três salários mínimos, e conferir no art. 2º se ela alcança o reforço de casas existentes.
-- Prever em regulamento, para os recursos do apoio, a medição antes do desembolso, o pagamento direto ao executor, a tabela de referência de preços, o teto por moradia, a devolução em caso de desvio e a vistoria amostral por terceiro. Tratar também os casos especiais: telhas de fibrocimento com amianto, bens tombados, estrutura com cupim ou corrosão e segurança do trabalho em altura.
+- Avaliar a articulação com a [Lei federal nº 11.888/2008](https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/lei/l11888.htm), que assegura assistência técnica pública e gratuita para habitação de interesse social a famílias com renda de até três salários mínimos. O art. 2º, § 1º, inclui a reforma entre os trabalhos abrangidos, o que dá base à assistência técnica do Programa; o custeio de materiais e mão de obra exige desenho financeiro próprio.
+- Prever em regulamento, para os recursos do apoio, a medição antes do desembolso, o pagamento direto ao executor, a tabela de referência de preços, o teto por moradia, a devolução em caso de desvio, a vistoria amostral por terceiro e a separação entre quem seleciona o beneficiário, quem executa a obra e quem autoriza o pagamento. Tratar também os casos especiais: telhas de fibrocimento com amianto, bens tombados, estrutura com cupim ou corrosão e segurança do trabalho em altura.
+- No Rio Grande do Sul, verificar com a área de habitação se a modalidade A Casa é Sua – Reforma ([Lei nº 16.138/2024](https://www.habitacao.rs.gov.br/upload/arquivos/202510/20120208-lei-16-138.pdf), art. 7º, § 4º), que inclui moradias de baixa renda em habitabilidade precária, já pode atender coberturas vulneráveis antes de um desastre. O art. 10 exige titularidade do beneficiário ou processo de aquisição de direito real, o que pode excluir inquilinos e ocupantes informais. Cópia arquivada no repositório em docs/fontes/lei-rs-16138-2024.pdf (texto original publicado no DOE de 10/06/2024, em versão da Consultoria Legislativa da Assembleia, sem conferência de alterações posteriores; baixada em 26/11/2026 do endereço acima; SHA-256 ac943ac56b60882b1bbad61fa2ed63810ecfdd5269eff81ded8cfd485eb9b99c).
 - Prever cooperação com os municípios para o licenciamento, para compatibilizar o licenciamento e reduzir o risco de embargo de obra apoiada pelo Estado.
 - Detalhar o desenho da avaliação do piloto, com comparação com imóveis sem intervenção, a intensidade do vento em cada evento e a taxa de destelhamento como indicador principal.
 - Verificar com jurista a competência para qualquer efeito do selo sobre seguros: legislar sobre seguros é matéria da União ([Constituição, art. 22, VII](https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm)). Um estado provavelmente só pode criar o selo e prever seu reconhecimento voluntário; descontos dependem de regulação federal ou de acordo com as seguradoras.
