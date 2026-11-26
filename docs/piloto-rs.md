@@ -48,7 +48,7 @@ Conectores e fixações estruturais, trabalho em altura, deslocamentos e os dema
 
 O BDI usado é o valor médio de referência para construção de edifícios no [Acórdão nº 2.622/2013 do TCU](https://www.mpf.mp.br/o-mpf/unidades/pr-to/transparencia/licitacoes-novo/2016/12Acordao26222013BDI.pdf) (faixa de 20,34% a 25,00%). A taxa efetiva depende da forma de contratação. Aqui o BDI incide também sobre diagnóstico, projeto e vistoria, que costumam ser contratados à parte; se incidir só sobre as obras, o subtotal fica em R$ 236.567,12. A área de 60 m² é tratada como área de telhamento, sem fator de inclinação.
 
-Com BDI, o custo médio fica em cerca de R$ 8.244 por obra concluída (R$ 247.329,27 divididos por 30), incluídas as vistorias sem obra. Essas 20 vistorias custam cerca de R$ 13.581 (20 × R$ 556,04 × 1,2212) e não reforçam nenhuma cobertura, mas produzem o diagnóstico e o encaminhamento da família.
+Considerando apenas os itens já estimados, com BDI, o piloto representa cerca de R$ 8.244 por obra concluída (R$ 247.329,27 divididos por 30), incluído o custo dos 50 diagnósticos. As 20 vistorias que não resultam em obra custam cerca de R$ 13.581 (20 × R$ 556,04 × 1,2212) e não reforçam nenhuma cobertura, mas produzem o diagnóstico e o encaminhamento da família.
 
 ## O que não está incluído
 
