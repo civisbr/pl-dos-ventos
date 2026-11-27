@@ -64,3 +64,4 @@ Considerando apenas os itens já estimados, com BDI, o piloto representa cerca d
 - Substituir a distribuição hipotética entre os níveis pelos resultados das primeiras vistorias.
 - Ajustar os preços ao município escolhido e à data de execução.
 - Conferir os valores com engenheiro orçamentista antes de apresentá-los como estimativa oficial.
+- Se a sugestão virar proposição, usar esta ficha como ponto de partida para a estimativa de impacto orçamentário exigida pelo art. 113 do ADCT e pelos arts. 16 e 17 da Lei de Responsabilidade Fiscal, completando os itens não incluídos. A ficha não substitui essa estimativa, que deve cobrir o exercício em que a despesa entrar em vigor e os dois seguintes (LRF, art. 16, I).
