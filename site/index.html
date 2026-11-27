@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   @@CABECA@@
   <link rel="icon" href="assets/favicon-ventos-brisa.ico">
+  <link rel="preload" href="assets/fontes/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fontes/manrope.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="estilos.css">
   <script src="vento.js" defer></script>
   <script src="explorar.js" defer></script>
@@ -13,60 +15,45 @@
   <a class="atalho" href="#conteudo">Pular para o conteúdo</a>
   <header class="cabecalho">
     <div class="limite topo">
-      <a class="marca" href="./"><img src="assets/icone-ventos.png" width="42" height="42" alt=""><span>PL dos Ventos<small>CIVISBR</small></span></a>
-      <nav aria-label="Navegação principal">
-        <a href="#proposta">A proposta</a>
-        <a href="#titulo-dados">Dados</a>
-        <a href="#acompanhamento">Acompanhamento</a>
-      </nav>
+      <a class="marca" href="./"><img src="assets/icone-ventos.png" width="40" height="40" alt=""><span>PL dos Ventos<small>CIVISBR</small></span></a>
+      <nav aria-label="Navegação principal">@@NAV@@</nav>
     </div>
   </header>
   <main id="conteudo" tabindex="-1">
-    <div class="abertura-fundo">
-      <section class="abertura limite" aria-labelledby="titulo">
-        <div class="abertura-texto">
-          <p class="estagio">Proposta cidadã em discussão para RS, SC e PR</p>
-          <h1 id="titulo">A prevenção vem <em>antes do vento.</em></h1>
-          <p class="introducao">De @@PERIODO@@, os registros de vendavais e ciclones no RS, SC e PR somam <strong>@@MORADIAS_SUL@@ moradias danificadas ou destruídas</strong>. Esta proposta quer reforçar as coberturas vulneráveis antes do próximo vento, com prioridade para famílias de baixa renda.</p>
-          <p class="nota-dado">Soma de registros do Atlas: o total não separa danos às coberturas de outros danos às moradias, e uma mesma moradia pode aparecer em mais de um registro. <a href="metodologia.html">Como contamos</a></p>
-          <div class="acoes">
-            <a class="botao" href="minuta-modelo.html">Ler a minuta</a>
-            <a class="link-texto" href="#titulo-dados">Explorar os dados</a>
-          </div>
+    <section class="abertura escuro" aria-labelledby="titulo">
+      @@VENTO@@
+      <div class="limite abertura-conteudo">
+        <p class="estagio">Proposta cidadã em discussão · RS · SC · PR</p>
+        <h1 id="titulo">A prevenção vem <em>antes do vento.</em></h1>
+        <div class="abertura-dado">
+          <p class="numero-abertura"><span class="numero">@@MORADIAS_SUL@@</span><span class="rotulo">moradias danificadas ou destruídas nos registros de vendavais e ciclones no RS, SC e PR, de @@PERIODO@@</span></p>
+          <p class="introducao">Esta proposta quer reforçar as coberturas vulneráveis <strong>antes</strong> do próximo vento, com prioridade para famílias de baixa renda.</p>
         </div>
-        <div class="campo">
-          <div class="campo-topo"><p class="campo-titulo">Campo de vento</p><p id="legenda-campo">Visualização didática</p></div>
-          <div class="campo-figura">
-            <canvas id="vento-canvas" role="img" aria-label="Ilustração didática: linhas de vento que contornam um ponto central"></canvas>
-            <span class="campo-norte" aria-hidden="true">N</span>
-            <span class="campo-leste" aria-hidden="true">L</span>
-            <span class="campo-sul" aria-hidden="true">S</span>
-            <span class="campo-oeste" aria-hidden="true">O</span>
-          </div>
-          <div id="controles-vento" class="controles-vento" hidden>
-            <button id="movimento" type="button">Animar o vento</button>
-            <details class="ajustes">
-              <summary>Ajustar a ilustração</summary>
-              <div><label for="direcao">Vento vindo de <output id="direcao-atual" for="direcao">Noroeste</output></label><input id="direcao" type="range" min="0" max="7" step="1" value="7"></div>
-              <div><label for="intensidade">Intensidade visual <output id="intensidade-atual" for="intensidade">Moderada</output></label><input id="intensidade" type="range" min="0" max="2" step="1" value="1"></div>
-            </details>
-          </div>
-          <noscript><p class="sem-script">A ilustração interativa requer JavaScript. A proposta e os dados estão nas seções abaixo.</p></noscript>
+        <p class="nota-dado">Soma de registros do Atlas: o total não separa danos às coberturas de outros danos às moradias, e uma mesma moradia pode aparecer em mais de um registro. <a href="metodologia.html">Como contamos</a></p>
+        <div class="acoes">
+          <a class="botao" href="minuta-modelo.html">Ler a minuta <span aria-hidden="true">→</span></a>
+          <a class="botao-contorno" href="#titulo-dados">Explorar os dados</a>
         </div>
-      </section>
-    </div>
-
-    <section class="faixa" aria-label="Dados sobre vendavais e ciclones">
-      <div class="limite faixa-conteudo">
-        <p class="dado-grande">@@REGISTROS_SUL@@</p>
-        <div><h2>registros de vendavais e ciclones no Sul</h2><p>De @@REGISTROS_BRASIL@@ no Brasil, de @@PERIODO@@. Atlas Digital de Desastres.</p></div>
-        <a class="link-texto" href="dados.html#metodologia">Ver fonte e metodologia</a>
+        <button id="movimento" class="pausa-vento" type="button" aria-pressed="false" hidden>Pausar o vento</button>
       </div>
     </section>
 
-    <section class="secao limite secao-dados" aria-labelledby="titulo-dados">
-      <div class="intro-dados"><h2 id="titulo-dados">O impacto, estado a estado</h2><p>Compare ocorrências, danos humanos e o impacto nas moradias. Os dados abrangem o período de @@PERIODO@@.</p></div>
-          <section id="explorador" class="explorador" hidden aria-labelledby="titulo-explorador">
+    <section class="faixa" aria-label="Registros de vendavais e ciclones">
+      <div class="limite faixa-conteudo">
+        <div><p class="faixa-numero">@@REGISTROS_SUL@@</p><p>registros de vendavais e ciclones no Sul</p></div>
+        <div><p class="faixa-numero">@@PERCENTUAL_SUL@@%</p><p>dos registros de vendavais e ciclones do Brasil (@@REGISTROS_BRASIL@@)</p></div>
+        <div><p class="faixa-numero">@@ANOS@@ anos</p><p>de dados, de @@PERIODO@@, no Atlas Digital de Desastres. <a href="dados.html#metodologia">Fonte e metodologia</a></p></div>
+      </div>
+    </section>
+
+    <section class="secao limite colunas secao-dados" aria-labelledby="titulo-dados">
+      <div class="intro-dados">
+        <h2 id="titulo-dados">O impacto, estado a estado</h2>
+        <p class="texto-lateral">Compare ocorrências, danos humanos e o impacto nas moradias. Os dados abrangem o período de @@PERIODO@@.</p>
+        <p class="link-fonte"><a href="dados.html">Abrir tabelas completas e metodologia <span aria-hidden="true">→</span></a></p>
+      </div>
+      <div>
+    <section id="explorador" class="explorador" hidden aria-labelledby="titulo-explorador">
       <h3 id="titulo-explorador">Comparar estados</h3>
       <div class="controles">
         <div><label for="fenomeno">Fenômeno</label><select id="fenomeno"><option value="vendavais_ciclones">Vendavais e ciclones</option><option value="tornados">Tornados</option></select></div>
@@ -89,63 +76,59 @@
       </div>
     </section>
     <noscript>@@TABELA_SUL@@</noscript>
-
-      <p class="link-fonte"><a href="dados.html">Abrir tabelas completas e metodologia</a></p>
-    </section>
-
-    <section id="proposta" class="secao limite colunas proposta" aria-labelledby="titulo-proposta">
-      <div>
-        <h2 id="titulo-proposta">Como funcionaria o piloto</h2>
-        <p class="texto-lateral">A vistoria poderia ocorrer com a casa ainda habitável, mesmo que ela nunca tenha sido atingida por um vendaval.</p>
-        <figure class="ilustracao-piloto"><img src="assets/piloto-casa.jpg" width="1000" height="667" loading="lazy" decoding="async" alt="Casa com três destaques: inspeção das telhas, detalhe do encontro entre a estrutura do telhado e a parede, e registro da vistoria final."></figure>
       </div>
-      <ol class="etapas">
-        <li><h3>Identificar as coberturas vulneráveis</h3><p>Priorizar moradias de baixa renda em áreas expostas e realizar o diagnóstico técnico no imóvel.</p></li>
-        <li><h3>Viabilizar o reforço</h3><p>Projetar a intervenção e apoiar materiais e mão de obra conforme as regras de cada estado.</p></li>
-        <li><h3>Vistoriar a obra concluída</h3><p>Documentar os elementos reforçados e orientar a família sobre a conservação da cobertura.</p></li>
-      </ol>
-      <p class="texto-lateral custo-piloto"><a href="piloto-rs.html">Quanto custaria um piloto no RS</a>: estimativa preliminar com preços do SINAPI.</p>
     </section>
 
-    <section id="experiencia" class="secao limite colunas experiencia" aria-labelledby="titulo-experiencia">
+    <section id="proposta" class="piloto" aria-labelledby="titulo-proposta">
+      <div class="limite piloto-grade">
+        <div class="piloto-intro">
+          <h2 id="titulo-proposta">Como funcionaria o piloto</h2>
+          <p class="texto-lateral">A vistoria poderia ocorrer com a casa ainda habitável, mesmo que ela nunca tenha sido atingida por um vendaval.</p>
+        </div>
+        <figure class="ilustracao-piloto"><img src="assets/piloto-casa.jpg" width="1000" height="667" loading="lazy" decoding="async" alt="Casa com três destaques: inspeção das telhas, detalhe do encontro entre a estrutura do telhado e a parede, e registro da vistoria final."></figure>
+        <ol class="etapas">
+          <li><h3>Identificar as coberturas vulneráveis</h3><p>Priorizar moradias de baixa renda em áreas expostas e realizar o diagnóstico técnico no imóvel.</p></li>
+          <li><h3>Viabilizar o reforço</h3><p>Projetar a intervenção e apoiar materiais e mão de obra conforme as regras de cada estado.</p></li>
+          <li><h3>Vistoriar a obra concluída</h3><p>Documentar os elementos reforçados e orientar a família sobre a conservação da cobertura.</p></li>
+        </ol>
+        <p class="custo-piloto"><a class="botao-escuro" href="piloto-rs.html">Quanto custaria um piloto no RS <span aria-hidden="true">→</span></a><span>Estimativa preliminar com preços do SINAPI.</span></p>
+      </div>
+    </section>
+
+    <section id="experiencia" class="secao limite colunas evidencias" aria-labelledby="titulo-experiencia">
       <div>
         <h2 id="titulo-experiencia">O que outros lugares fizeram</h2>
         <p class="texto-lateral">Há evidência de fora que orienta o desenho do piloto, e limites que ela impõe. Nenhum estudo abaixo trata de vendavais do Sul do Brasil.</p>
       </div>
-      <dl class="glossario precedentes">
-        <dt>Alabama (EUA): reforço de telhados de casas existentes</dt>
-        <dd>O programa estadual Strengthen Alabama Homes paga o reforço do telhado ao padrão FORTIFIED Roof (até US$ 10 mil por telhado, contra custo médio de cerca de US$ 13 mil; cerca de 8.700 casas e US$ 86 milhões desde 2016), com recursos de taxas do setor de seguros. Após o furacão Sally (2020, categoria 2, ventos máximos sustentados de 105 mph), um estudo do departamento estadual de seguros e da Universidade do Alabama analisou 40.195 apólices. Na análise que os autores consideram a mais robusta (sem sinistros de queda de árvores e comparando cada casa reforçada com a convencional mais próxima, até cerca de 400 m; 1.558 pares), casas com FORTIFIED Roof tiveram 73% menos sinistros, 15% menos custo por sinistro em proporção ao valor da casa e 72% menos perda sobre o prêmio. Nas outras duas análises, as reduções de frequência ficaram em 56% e 69%. Casas sob regra equivalente ao FORTIFIED Roof, mas sem a vistoria do programa, tiveram resultado bem inferior; no nível Gold a diferença não apareceu (tabela 13), e os autores não sabem explicar por quê. O relatório cita custo adicional de 6% a 16% para reforçar uma casa existente, segundo estudo de Oklahoma. <strong>Limite:</strong> estudo observacional, de um único furacão; as casas FORTIFIED Roof ficavam, em média, cerca de três milhas mais longe da costa que as de nível Gold, o que limita a comparação entre os dois níveis; o departamento que administra o programa é coautor do relatório, a IBHS (dona do padrão) forneceu dados técnicos, os dados de sinistros vêm de seguradoras, e a revisão por pares foi de dois pareceristas sobre rascunhos, sem publicação em periódico. Fonte: <a href="https://www.aldoi.gov/PDF/News/PerformanceIBHSFortifiedHomeConstructionHurricaneSally.pdf">relatório (PDF, ALDOI/CRIR, 05/05/2025)</a>, tabelas 7, 8 e 13 e seções 1 a 1.3.</dd>
-        <dt>Moore (Oklahoma): exigência para casas novas</dt>
-        <dd>Após o tornado de 2013 (24 mortes), a cidade adotou em 2014 um código que eleva o vento de projeto de 90 para 135 mph, com ferragens de ligação do telhado às paredes (hurricane straps), vigas do telhado mais próximas, painel OSB no fechamento externo e portas de garagem resistentes ao vento. Estudo comparando Moore com a vizinha Norman, com dados de vendas de 2012 a 2015, não encontrou efeito significativo sobre vendas, preço por pé quadrado nem licenças. O custo adicional ficou em cerca de US$ 2 por pé quadrado ou mais, segundo construtores, contra US$ 1 previsto. Uma análise de custo-benefício anterior estimou retorno de 3 para 1 para a aplicação do código de Moore a todo o estado de Oklahoma. <strong>Limite:</strong> nenhum dos estudos mede o dano evitado em um tornado real, e o retorno é modelado; o código visa evitar o colapso da estrutura em tornados até EF-2; a pesquisa foi financiada pelo Institute for Catastrophic Loss Reduction, instituto vinculado a um dos autores. Mostra viabilidade e custo, não eficácia comprovada. Fontes: <a href="https://doi.org/10.1016/j.ijdrr.2017.09.040">Simmons e Kovacs (2018)</a>, lido na versão preliminar do <a href="https://doi.org/10.2139/ssrn.2963220">SSRN (2017)</a>; <a href="https://doi.org/10.1175/WCAS-D-14-00032.1">Simmons, Kovacs e Kopp (2015)</a>.</dd>
-        <dt>Joplin (Missouri): onde a cobertura falha</dt>
-        <dd>O relatório do NIST sobre o tornado de 2011 concluiu que as falhas estruturais nas residências foram sobretudo desconexões entre cobertura e paredes e entre paredes e fundação, por falta de robustez nas ligações, e não por falta de capacidade dos componentes. Ligações mais robustas contra o arrancamento (uplift), segundo o relatório, ajudam a manter a cobertura presa e reduzem a gravidade do dano. A idade da construção não alterou o dano de forma estatisticamente significativa. Por isso a proposta prevê que a vistoria olhe as ligações, e não só as telhas. Segundo o International Code Council, que elabora os códigos modelo americanos, a edição 2024 do International Building Code passou a incluir carga de tornado com base nessa pesquisa, sem que a fonte detalhe a quais edificações se aplica (carta do ICC à FEMA, 29/01/2025; parte interessada). <strong>Limite:</strong> tornado extremo, com ventos acima do projeto; o resultado é sobre mecanismo de falha, não sobre vendavais comuns. Fonte: <a href="https://doi.org/10.6028/NIST.NCSTAR.3">NIST NCSTAR 3, seção 3.2.3.2</a>.</dd>
+      <dl class="casos">
+          <div class="caso"><dt>Alabama (EUA): reforço de telhados de casas existentes</dt><dd>O programa estadual Strengthen Alabama Homes paga o reforço do telhado ao padrão FORTIFIED Roof (até US$ 10 mil por telhado, contra custo médio de cerca de US$ 13 mil; cerca de 8.700 casas e US$ 86 milhões desde 2016), com recursos de taxas do setor de seguros. Após o furacão Sally (2020, categoria 2, ventos máximos sustentados de 105 mph), um estudo do departamento estadual de seguros e da Universidade do Alabama analisou 40.195 apólices. Na análise que os autores consideram a mais robusta (sem sinistros de queda de árvores e comparando cada casa reforçada com a convencional mais próxima, até cerca de 400 m; 1.558 pares), casas com FORTIFIED Roof tiveram 73% menos sinistros, 15% menos custo por sinistro em proporção ao valor da casa e 72% menos perda sobre o prêmio. Nas outras duas análises, as reduções de frequência ficaram em 56% e 69%. Casas sob regra equivalente ao FORTIFIED Roof, mas sem a vistoria do programa, tiveram resultado bem inferior; no nível Gold a diferença não apareceu (tabela 13), e os autores não sabem explicar por quê. O relatório cita custo adicional de 6% a 16% para reforçar uma casa existente, segundo estudo de Oklahoma. <strong>Limite:</strong> estudo observacional, de um único furacão; as casas FORTIFIED Roof ficavam, em média, cerca de três milhas mais longe da costa que as de nível Gold, o que limita a comparação entre os dois níveis; o departamento que administra o programa é coautor do relatório, a IBHS (dona do padrão) forneceu dados técnicos, os dados de sinistros vêm de seguradoras, e a revisão por pares foi de dois pareceristas sobre rascunhos, sem publicação em periódico. Fonte: <a href="https://www.aldoi.gov/PDF/News/PerformanceIBHSFortifiedHomeConstructionHurricaneSally.pdf">relatório (PDF, ALDOI/CRIR, 05/05/2025)</a>, tabelas 7, 8 e 13 e seções 1 a 1.3.</dd></div>
+          <div class="caso"><dt>Moore (Oklahoma): exigência para casas novas</dt><dd>Após o tornado de 2013 (24 mortes), a cidade adotou em 2014 um código que eleva o vento de projeto de 90 para 135 mph, com ferragens de ligação do telhado às paredes (hurricane straps), vigas do telhado mais próximas, painel OSB no fechamento externo e portas de garagem resistentes ao vento. Estudo comparando Moore com a vizinha Norman, com dados de vendas de 2012 a 2015, não encontrou efeito significativo sobre vendas, preço por pé quadrado nem licenças. O custo adicional ficou em cerca de US$ 2 por pé quadrado ou mais, segundo construtores, contra US$ 1 previsto. Uma análise de custo-benefício anterior estimou retorno de 3 para 1 para a aplicação do código de Moore a todo o estado de Oklahoma. <strong>Limite:</strong> nenhum dos estudos mede o dano evitado em um tornado real, e o retorno é modelado; o código visa evitar o colapso da estrutura em tornados até EF-2; a pesquisa foi financiada pelo Institute for Catastrophic Loss Reduction, instituto vinculado a um dos autores. Mostra viabilidade e custo, não eficácia comprovada. Fontes: <a href="https://doi.org/10.1016/j.ijdrr.2017.09.040">Simmons e Kovacs (2018)</a>, lido na versão preliminar do <a href="https://doi.org/10.2139/ssrn.2963220">SSRN (2017)</a>; <a href="https://doi.org/10.1175/WCAS-D-14-00032.1">Simmons, Kovacs e Kopp (2015)</a>.</dd></div>
+          <div class="caso"><dt>Joplin (Missouri): onde a cobertura falha</dt><dd>O relatório do NIST sobre o tornado de 2011 concluiu que as falhas estruturais nas residências foram sobretudo desconexões entre cobertura e paredes e entre paredes e fundação, por falta de robustez nas ligações, e não por falta de capacidade dos componentes. Ligações mais robustas contra o arrancamento (uplift), segundo o relatório, ajudam a manter a cobertura presa e reduzem a gravidade do dano. A idade da construção não alterou o dano de forma estatisticamente significativa. Por isso a proposta prevê que a vistoria olhe as ligações, e não só as telhas. Segundo o International Code Council, que elabora os códigos modelo americanos, a edição 2024 do International Building Code passou a incluir carga de tornado com base nessa pesquisa, sem que a fonte detalhe a quais edificações se aplica (carta do ICC à FEMA, 29/01/2025; parte interessada). <strong>Limite:</strong> tornado extremo, com ventos acima do projeto; o resultado é sobre mecanismo de falha, não sobre vendavais comuns. Fonte: <a href="https://doi.org/10.6028/NIST.NCSTAR.3">NIST NCSTAR 3, seção 3.2.3.2</a>.</dd></div>
       </dl>
     </section>
 
-    <section id="normas" class="secao limite colunas experiencia" aria-labelledby="titulo-normas">
+    <section id="normas" class="secao limite colunas evidencias" aria-labelledby="titulo-normas">
       <div>
         <h2 id="titulo-normas">Normas técnicas de referência</h2>
         <p class="texto-lateral">Duas normas da ABNT se complementam na cobertura: uma estabelece como considerar o vento no projeto, a outra define o que o telhado deve entregar. Cabe ao projeto definir quais se aplicam a cada reforço.</p>
       </div>
-      <dl class="glossario precedentes">
-        <dt>ABNT NBR 6123: forças devidas ao vento em edificações</dt>
-        <dd>Estabelece as condições para considerar as ações estática e dinâmica do vento no projeto de edificações, incluindo a estrutura como um todo, partes, componentes e acessórios. Na descrição de um trabalho acadêmico de 2025, o cálculo parte da velocidade básica do vento, dada por um mapa do Brasil, ajusta essa velocidade conforme o terreno, a rugosidade do entorno e o período de retorno, converte o resultado em pressão e aplica coeficientes a cada superfície. O vento produz pressão e também sucção nas superfícies, e é a sucção que ameaça arrancar componentes da cobertura. A edição vigente é de dezembro de 2023 (com errata de abril de 2025). <strong>Limite:</strong> define as ações do vento, não o que é um reforço aceitável de cobertura existente nem o protocolo de vistoria. Fontes: <a href="https://www.normas.com.br/visualizar/abnt-nbr-nm/5616/nbr6123-forcas-devidas-ao-vento-em-edificacoes">catálogo da Normas.com.br</a> e <a href="https://www.univates.br/bduserver/api/core/bitstreams/9e98d1a4-2e6b-4c75-b1af-a2dd46197a8a/content">monografia da Univates (2025)</a>.</dd>
-        <dt>ABNT NBR 15575-5: desempenho de sistemas de coberturas</dt>
-        <dd>Parte da norma de desempenho de edificações habitacionais, que define o que a construção deve entregar ao morador, e não como construí-la. Estabelece requisitos e critérios para os sistemas de coberturas, e um deles liga as duas normas: sob a ação do vento calculada conforme a NBR 6123, não pode ocorrer remoção ou dano de componentes da cobertura sujeitos à sucção. Esse requisito é descrito conforme a edição de 2013; o catálogo registra versão de dezembro de 2025, que incorpora emenda e sucede a de setembro de 2021. <strong>Limite:</strong> a aplicação a reforços em casas existentes é ponto a definir no protocolo de vistoria. Outra norma, a ABNT NBR 16280 (reforma em edificações), pode ser relevante (a avaliar). Fontes: <a href="https://normas.com.br/visualizar/abnt-nbr-nm/27244/abnt-nbr15575-5-edificacoes-habitacionais-desempenho-parte-5-requisitos-para-os-sistemas-de-coberturas">catálogo da Normas.com.br</a> e <a href="https://goias.gov.br/administracao/wp-content/uploads/sites/27/files/licitacoes-contratos/1PE0620AnexoXIIINormadeDesempenhoABNTNBR15575.pdf">guia de aplicação do Governo de Goiás</a>.</dd>
+      <dl class="casos">
+          <div class="caso"><dt>ABNT NBR 6123: forças devidas ao vento em edificações</dt><dd>Estabelece as condições para considerar as ações estática e dinâmica do vento no projeto de edificações, incluindo a estrutura como um todo, partes, componentes e acessórios. Na descrição de um trabalho acadêmico de 2025, o cálculo parte da velocidade básica do vento, dada por um mapa do Brasil, ajusta essa velocidade conforme o terreno, a rugosidade do entorno e o período de retorno, converte o resultado em pressão e aplica coeficientes a cada superfície. O vento produz pressão e também sucção nas superfícies, e é a sucção que ameaça arrancar componentes da cobertura. A edição vigente é de dezembro de 2023 (com errata de abril de 2025). <strong>Limite:</strong> define as ações do vento, não o que é um reforço aceitável de cobertura existente nem o protocolo de vistoria. Fontes: <a href="https://www.normas.com.br/visualizar/abnt-nbr-nm/5616/nbr6123-forcas-devidas-ao-vento-em-edificacoes">catálogo da Normas.com.br</a> e <a href="https://www.univates.br/bduserver/api/core/bitstreams/9e98d1a4-2e6b-4c75-b1af-a2dd46197a8a/content">monografia da Univates (2025)</a>.</dd></div>
+          <div class="caso"><dt>ABNT NBR 15575-5: desempenho de sistemas de coberturas</dt><dd>Parte da norma de desempenho de edificações habitacionais, que define o que a construção deve entregar ao morador, e não como construí-la. Estabelece requisitos e critérios para os sistemas de coberturas, e um deles liga as duas normas: sob a ação do vento calculada conforme a NBR 6123, não pode ocorrer remoção ou dano de componentes da cobertura sujeitos à sucção. Esse requisito é descrito conforme a edição de 2013; o catálogo registra versão de dezembro de 2025, que incorpora emenda e sucede a de setembro de 2021. <strong>Limite:</strong> a aplicação a reforços em casas existentes é ponto a definir no protocolo de vistoria. Outra norma, a ABNT NBR 16280 (reforma em edificações), pode ser relevante (a avaliar). Fontes: <a href="https://normas.com.br/visualizar/abnt-nbr-nm/27244/abnt-nbr15575-5-edificacoes-habitacionais-desempenho-parte-5-requisitos-para-os-sistemas-de-coberturas">catálogo da Normas.com.br</a> e <a href="https://goias.gov.br/administracao/wp-content/uploads/sites/27/files/licitacoes-contratos/1PE0620AnexoXIIINormadeDesempenhoABNTNBR15575.pdf">guia de aplicação do Governo de Goiás</a>.</dd></div>
       </dl>
     </section>
 
-    <section id="acompanhamento" class="secao acompanhamento" aria-labelledby="titulo-acompanhamento">
-      <div class="limite colunas">
+    <section id="acompanhamento" class="acompanhamento escuro" aria-labelledby="titulo-acompanhamento">
+      <div class="limite colunas secao">
         <div><h2 id="titulo-acompanhamento">Acompanhamento das sugestões</h2>
           <p class="texto-lateral">O CivisBR registra aqui as movimentações confirmadas nos canais de cada Assembleia.</p>
-          <a class="link-texto" href="encaminhamentos.html">Ler as notas de encaminhamento</a>
+          <p class="link-fonte"><a href="encaminhamentos.html">Ler as notas de encaminhamento <span aria-hidden="true">→</span></a></p>
         </div>
         <div class="historicos">@@ACOMPANHAMENTO@@</div>
       </div>
     </section>
   </main>
-  <footer class="limite rodape"><p><strong>CivisBR</strong> · Proposta cidadã preliminar · Dados: Atlas Digital de Desastres, edição @@EDICAO@@</p><a href="https://github.com/civisbr/pl-dos-ventos">Repositório do projeto</a></footer>
+  <footer class="rodape escuro"><div class="limite rodape-conteudo"><p><strong>CivisBR</strong> · Proposta cidadã preliminar · Dados: Atlas Digital de Desastres, edição @@EDICAO@@</p><a href="https://github.com/civisbr/pl-dos-ventos">Repositório do projeto</a></div></footer>
   <script type="application/json" id="dados-explorador">@@DADOS_EXPLORADOR@@</script>
 </body>
 </html>

@@ -69,6 +69,20 @@ class Montagem(unittest.TestCase):
         self.assertIn("Content-Security-Policy", html)
         self.assertIn('rel="canonical"', html)
 
+    def test_navegacao_e_campo_de_vento(self):
+        self.assertNotIn("aria-current", gerar_site.navegacao("index.html"))
+        self.assertIn('href="dados.html" aria-current="page"', gerar_site.navegacao("dados.html"))
+        self.assertIn('aria-current="page">Minuta', gerar_site.navegacao("minuta-modelo.html"))
+        self.assertEqual(gerar_site.campo_vento(5).count("<path "), 5)
+
+    def test_separa_titulo_e_apresentacao(self):
+        titulo, lead, corpo = gerar_site.separar_titulo("<h1>T</h1>\n<p>Apresentação</p>\n<h2>A</h2>")
+        self.assertEqual((titulo, lead, corpo), ("T", '<p class="lead">Apresentação</p>', "<h2>A</h2>"))
+        titulo, lead, corpo = gerar_site.separar_titulo("<h1>T</h1>\n<p><strong>Fonte.</strong> x</p>")
+        self.assertEqual((lead, corpo), ("", "<p><strong>Fonte.</strong> x</p>"))
+        with self.assertRaises(ValueError):
+            gerar_site.separar_titulo("<p>sem título</p>")
+
     def test_periodo_por_extenso(self):
         self.assertEqual(gerar_site.periodo_extenso("1991–2025 · v1.1 · 06/08/2026"), "1991 a 2025")
 
@@ -80,10 +94,20 @@ class Montagem(unittest.TestCase):
             self.assertNotRegex(texto, r"@@[A-Z_]+@@", arquivo.name)
             self.assertIn("Content-Security-Policy", texto, arquivo.name)
         self.assertIn("sitemap.xml", (dist / "robots.txt").read_text())
-        self.assertRegex((dist / "index.html").read_text(encoding="utf-8"), r"De \d{4} a \d{4},")
+        inicial = (dist / "index.html").read_text(encoding="utf-8")
+        self.assertRegex(inicial, r"de \d{4} a \d{4}</span>")
+        self.assertRegex(inicial, r'class="faixa-numero">\d{1,3}%</p>')
+        self.assertRegex(inicial, r'class="faixa-numero">\d+ anos</p>')
         self.assertTrue((dist / "minuta-modelo.html").exists())
         for destino in LINK_INTERNO.values():
             self.assertTrue((dist / destino).exists(), destino)
+        for nome in ("fraunces.woff2", "fraunces-italico.woff2", "manrope.woff2", "OFL-Fraunces.txt", "OFL-Manrope.txt"):
+            self.assertTrue((dist / "assets" / "fontes" / nome).exists(), nome)
+        for arquivo in [*dist.glob("*.html"), dist / "estilos.css"]:
+            texto = arquivo.read_text(encoding="utf-8")
+            self.assertNotRegex(texto, r"fonts\.(googleapis|gstatic)\.com|url\(\s*[\"']?https?:", arquivo.name)
+        self.assertIn('aria-current="page"', (dist / "dados.html").read_text(encoding="utf-8"))
+        self.assertIn("data-label=", (dist / "piloto-rs.html").read_text(encoding="utf-8"))
         self.assertIn("<urlset", (dist / "sitemap.xml").read_text())
 
 

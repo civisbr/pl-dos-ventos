@@ -5,24 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   @@CABECA@@
   <link rel="icon" href="assets/favicon-ventos-brisa.ico">
+  <link rel="preload" href="assets/fontes/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fontes/manrope.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
   <a class="atalho" href="#conteudo">Pular para o conteúdo</a>
   <header class="cabecalho">
     <div class="limite topo">
-      <a class="marca" href="./"><img src="assets/icone-ventos.png" width="42" height="42" alt=""><span>PL dos Ventos<small>CIVISBR</small></span></a>
-      <nav aria-label="Navegação principal">
-        <a href="./#proposta">A proposta</a>
-        <a href="dados.html">Dados</a>
-        <a href="./#acompanhamento">Acompanhamento</a>
-      </nav>
+      <a class="marca" href="./"><img src="assets/icone-ventos.png" width="40" height="40" alt=""><span>PL dos Ventos<small>CIVISBR</small></span></a>
+      <nav aria-label="Navegação principal">@@NAV@@</nav>
     </div>
   </header>
-  <main id="conteudo" tabindex="-1" class="limite documento">
-    @@CONTEUDO@@
-    <p class="fonte-documento"><a href="@@ORIGEM@@" download>Baixar em Markdown (@@ORIGEM@@)</a></p>
+  <main id="conteudo" tabindex="-1">
+    <section class="faixa-titulo escuro">
+      @@VENTO@@
+      <div class="limite faixa-titulo-conteudo">
+        <h1>@@TITULO@@</h1>
+        @@LEAD@@
+      </div>
+    </section>
+    <article class="limite documento">
+      @@CONTEUDO@@
+      <p class="fonte-documento"><a href="@@ORIGEM@@" download>Baixar em Markdown (@@ORIGEM@@)</a></p>
+    </article>
   </main>
-  <footer class="limite rodape"><p><strong>CivisBR</strong> · Proposta cidadã preliminar</p><a href="https://github.com/civisbr/pl-dos-ventos">Repositório do projeto</a></footer>
+  <footer class="rodape escuro"><div class="limite rodape-conteudo"><p><strong>CivisBR</strong> · Proposta cidadã preliminar</p><a href="https://github.com/civisbr/pl-dos-ventos">Repositório do projeto</a></div></footer>
 </body>
 </html>

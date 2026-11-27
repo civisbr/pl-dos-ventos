@@ -70,8 +70,15 @@ def converter(texto):
                 raise ValueError("Tabela Markdown sem linha separadora")
             cab, corpo = tabela[0], tabela[2:]
             cabecalho = "".join(f'<th scope="col">{inline(c)}</th>' for c in cab)
+            # Cada célula leva o nome da coluna para a tabela virar cartões no celular.
+            if any(len(linha_tab) > len(cab) for linha_tab in corpo):
+                raise ValueError("Tabela Markdown com mais células que o cabeçalho")
+            rotulos = [escape(re.sub(r"\*\*|`|\[([^\]]+)\]\([^)]*\)", r"\1", c), quote=True) for c in cab]
             linhas_html = "".join(
-                "<tr>" + "".join(f"<td>{inline(c)}</td>" for c in linha_tab) + "</tr>"
+                "<tr>" + "".join(
+                    f'<td data-label="{rotulos[k]}">{inline(c)}</td>'
+                    for k, c in enumerate(linha_tab)
+                ) + "</tr>"
                 for linha_tab in corpo
             )
             blocos.append(

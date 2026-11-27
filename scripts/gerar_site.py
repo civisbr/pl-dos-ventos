@@ -176,7 +176,7 @@ def cabeca(arquivo, titulo, descricao):
         f'<meta name="description" content="{descricao}">',
         f'<meta http-equiv="Content-Security-Policy" content="{CSP}">',
         '<meta name="referrer" content="strict-origin-when-cross-origin">',
-        '<meta name="theme-color" content="#f8fbfc">',
+        '<meta name="theme-color" content="#0f1a26">',
         f'<link rel="canonical" href="{url}">',
         '<meta property="og:type" content="website">',
         '<meta property="og:locale" content="pt_BR">',
@@ -190,6 +190,51 @@ def cabeca(arquivo, titulo, descricao):
 
 
 MARCADOR = re.compile(r"@@[A-Z_]+@@")
+NAVEGACAO = (
+    ("Dados", "#titulo-dados", "dados.html"),
+    ("Piloto", "#proposta", "./#proposta"),
+    ("Evidências", "#experiencia", "./#experiencia"),
+    ("Acompanhamento", "#acompanhamento", "./#acompanhamento"),
+    ("Minuta", "minuta-modelo.html", "minuta-modelo.html"),
+)
+TITULO_DOCUMENTO = re.compile(r"<h1>(.*?)</h1>\n(?:(<p>.*?</p>)\n)?", re.S)
+
+
+def navegacao(pagina):
+    links = []
+    for rotulo, na_inicial, fora in NAVEGACAO:
+        destino = na_inicial if pagina == "index.html" else fora
+        atual = ' aria-current="page"' if destino == pagina else ""
+        classe = ' class="destaque"' if rotulo == "Minuta" else ""
+        links.append(f'<a href="{destino}"{classe}{atual}>{rotulo}</a>')
+    return "".join(links)
+
+
+def campo_vento(linhas):
+    caminhos = []
+    for k in range(linhas):
+        y = 60 + k * 880 // linhas
+        a = 40 + (k % 3) * 20
+        caminhos.append(
+            f'<path d="M -200 {y} C 100 {y - a}, 300 {y + a}, 600 {y} '
+            f'S 1100 {y - a}, 1400 {y} S 1900 {y + a}, 2200 {y}" opacity="{(.3, .5, .7)[k % 3]}"/>'
+        )
+    return (
+        '<svg class="campo-vento" viewBox="0 0 2000 1000" preserveAspectRatio="none" '
+        f'aria-hidden="true" focusable="false">{"".join(caminhos)}</svg>'
+    )
+
+
+def separar_titulo(html):
+    """O título e a linha de apresentação vão para a faixa escura; um parágrafo que abre com rótulo ("**Fonte.**") é conteúdo, não apresentação."""
+    achado = TITULO_DOCUMENTO.match(html)
+    if not achado:
+        raise ValueError("Documento sem título de nível 1 no início")
+    titulo, lead = achado.groups()
+    if lead and re.match(r"<p><strong>[^<]*\.</strong>", lead):
+        return titulo, "", html[achado.start(2):]
+    lead = lead.replace("<p>", '<p class="lead">', 1) if lead else ""
+    return titulo, lead, html[achado.end():]
 
 
 def montar(nome, modelo, substituicoes):
@@ -202,7 +247,11 @@ def montar(nome, modelo, substituicoes):
 
 def escrever(nome, substituicoes, titulo, descricao, saida=None):
     pagina = (ROOT / "site" / nome).read_text(encoding="utf-8")
-    substituicoes = {**substituicoes, "@@CABECA@@": cabeca(saida or nome, titulo, descricao)}
+    substituicoes = {
+        **substituicoes,
+        "@@CABECA@@": cabeca(saida or nome, titulo, descricao),
+        "@@NAV@@": navegacao(saida or nome),
+    }
     (DIST / (saida or nome)).write_text(montar(nome, pagina, substituicoes), encoding="utf-8")
 
 
@@ -218,7 +267,10 @@ def main():
         {"ufs": UFS, "sul": SUL, "grupos": impactos},
         ensure_ascii=False, separators=(",", ":"),
     ).replace("<", "\\u003c")
-    comuns = {"@@PERIODO@@": escape(periodo), "@@EDICAO@@": escape(edicao)}
+    comuns = {"@@PERIODO@@": escape(periodo), "@@EDICAO@@": escape(edicao), "@@VENTO@@": campo_vento(8)}
+    registros_sul = sum(ventos[uf]["ocorrencias"] for uf in SUL)
+    registros_brasil = sum(dados["ocorrencias"] for dados in ventos.values())
+    inicio, fim = (int(ano) for ano in periodo.split(" a "))
     sul_ventos = sorted(((uf, ventos[uf]) for uf in SUL), key=lambda item: -item[1]["moradias"])
 
     if DIST.exists():
@@ -228,8 +280,11 @@ def main():
         **comuns,
         "@@ACOMPANHAMENTO@@": historico,
         "@@DADOS_EXPLORADOR@@": explorador,
-        "@@REGISTROS_SUL@@": numero(sum(ventos[uf]["ocorrencias"] for uf in SUL)),
-        "@@REGISTROS_BRASIL@@": numero(sum(dados["ocorrencias"] for dados in ventos.values())),
+        "@@VENTO@@": campo_vento(14),
+        "@@REGISTROS_SUL@@": numero(registros_sul),
+        "@@REGISTROS_BRASIL@@": numero(registros_brasil),
+        "@@PERCENTUAL_SUL@@": str(round(100 * registros_sul / registros_brasil)),
+        "@@ANOS@@": str(fim - inicio + 1),
         "@@MORADIAS_SUL@@": numero(sum(ventos[uf]["moradias"] for uf in SUL)),
         "@@TABELA_SUL@@": tabela(sul_ventos, "Comparação no Sul"),
     }, "PL dos Ventos · CivisBR", "Proposta cidadã de reforço preventivo de coberturas no Sul do Brasil, dados de desastres e acompanhamento das sugestões.")
@@ -240,8 +295,12 @@ def main():
         "@@TORNADOS@@": comparacao(impactos["tornados"]),
     }, "Dados de desastres por vento · PL dos Ventos", f"Compare registros de vendavais, ciclones e tornados e seus danos humanos e habitacionais por estado, de {periodo}.")
     for stem, (origem, titulo, descricao) in DOCUMENTOS.items():
+        titulo_doc, lead, corpo = separar_titulo(converter((ROOT / origem).read_text(encoding="utf-8")))
         escrever("documento.html", {
-            "@@CONTEUDO@@": converter((ROOT / origem).read_text(encoding="utf-8")),
+            "@@VENTO@@": campo_vento(8),
+            "@@TITULO@@": titulo_doc,
+            "@@LEAD@@": lead,
+            "@@CONTEUDO@@": corpo,
             "@@ORIGEM@@": Path(origem).name,
         }, f"{titulo} · PL dos Ventos", descricao, saida=f"{stem}.html")
     for arquivo in (
