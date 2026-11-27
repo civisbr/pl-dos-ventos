@@ -75,7 +75,7 @@ class Montagem(unittest.TestCase):
         self.assertTrue(vento.startswith('"use strict";'))
         self.assertNotRegex(vento, r"(?m)^(async |function|const|let|var|class) ")
         css = (RAIZ / "site" / "estilos.css").read_text(encoding="utf-8")
-        self.assertIn(".vento-ativo.vento-parado .abertura .campo-vento path { animation-play-state: paused; }", css)
+        self.assertIn(".vento-ativo.vento-parado .escuro .campo-vento path { animation-play-state: paused; }", css)
 
     def test_navegacao_e_campo_de_vento(self):
         self.assertNotIn("aria-current", gerar_site.navegacao("index.html"))
