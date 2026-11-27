@@ -67,7 +67,7 @@ a:hover { text-decoration-thickness: .14em; }
 .vento-ativo .abertura .campo-vento path:nth-child(4n+4) { animation-duration: 12.5s; animation-delay: -3.9s; }
 .vento-ativo .abertura .campo-vento path:nth-child(3n) { animation-delay: -5.2s; }
 @keyframes corrente { from { stroke-dashoffset: 2400; } to { stroke-dashoffset: 0; } }
-.vento-parado .campo-vento path { animation-play-state: paused; }
+.vento-ativo.vento-parado .abertura .campo-vento path { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) { .campo-vento path { animation: none !important; } }
 
 .cabecalho { position: absolute; z-index: 2; inset: 0 0 auto; color: var(--tempestade-texto); }
